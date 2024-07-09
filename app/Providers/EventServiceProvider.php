@@ -139,7 +139,7 @@ class EventServiceProvider extends ServiceProvider
             Google2FALoginSucceeded::class
         ],
 
-        SocialiteWasCalled::class => [
+        \SocialiteProviders\Manager\SocialiteWasCalled::class => [
             'SocialiteProviders\\PeeringDB\\PeeringDBExtendSocialite@handle',
         ],
 

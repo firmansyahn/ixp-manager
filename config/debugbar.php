@@ -127,7 +127,7 @@ return [
         'time'            => true,  // Time Datalogger
         'memory'          => true,  // Memory usage
         'exceptions'      => true,  // Exception displayer
-        'log'             => true,  // Logs from Monolog (merged in messages if enabled)
+        'log'             => false,  // Logs from Monolog (merged in messages if enabled)
         // ---------------------------------------------------------------------------
         // barryo - 20180214 - the following is set to false as Eloquent namespace
         // conflicts with Doctrine namespace for the debugbar. So, no Eloquent love
