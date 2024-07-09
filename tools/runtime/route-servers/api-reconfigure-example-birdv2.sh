@@ -72,6 +72,8 @@ while getopts "?qdfh:" opt; do
             show_help
             exit 0
             ;;
+        q)  echo
+            ;;   
         d)  export DEBUG=1
             ;;
         f)  export FORCE_RELOAD=1
