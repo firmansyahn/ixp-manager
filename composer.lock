@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ea69cc5dd0cfe0d53fee8745b1099163",
+    "content-hash": "946dabc7ca84142615a209a6433a3c76",
     "packages": [
         {
             "name": "anahkiasen/former",
@@ -5634,6 +5634,47 @@
                 "source": "https://github.com/socialiteproviders/manager"
             },
             "time": "2024-05-04T07:57:39+00:00"
+        },
+        {
+            "name": "socialiteproviders/peeringdb",
+            "version": "4.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SocialiteProviders/PeeringDB.git",
+                "reference": "3b7c15d4c04d2dcb89a8dfd7842086c63d8f5fce"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SocialiteProviders/PeeringDB/zipball/3b7c15d4c04d2dcb89a8dfd7842086c63d8f5fce",
+                "reference": "3b7c15d4c04d2dcb89a8dfd7842086c63d8f5fce",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^7.2 || ^8.0",
+                "socialiteproviders/manager": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SocialiteProviders\\PeeringDB\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Barry O'Donovan",
+                    "email": "barry@opensolutions.ie"
+                }
+            ],
+            "description": "PeeringDB OAuth2 Provider for Laravel Socialite",
+            "support": {
+                "source": "https://github.com/SocialiteProviders/PeeringDB/tree/4.1.0"
+            },
+            "time": "2020-12-01T23:10:59+00:00"
         },
         {
             "name": "socialiteproviders/zoho",

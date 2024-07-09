@@ -45,6 +45,7 @@
         "pragmarx/google2fa-laravel": "^1.4.1",
         "s1lentium/iptools": "^1.1",
         "socialiteproviders/manager": "*",
+        "socialiteproviders/peeringdb": "*",
         "socialiteproviders/zoho": "^4.1.0",
         "webpatser/laravel-countries": "^1.5.4",
         "wolfcast/browser-detection": "^2.9.5",

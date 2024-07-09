@@ -20429,38 +20429,6 @@ namespace Laravel\Socialite\Facades {
             }
     }
 
-namespace Mews\Purifier\Facades {
-            /**
-     * 
-     *
-     * @see \Mews\Purifier
-     */        class Purifier {
-                    /**
-         * 
-         *
-         * @param $dirty
-         * @param array<string, mixed>|string|null $config
-         * @param \Closure|null $postCreateConfigHook
-         * @return mixed 
-         * @static 
-         */        public static function clean($dirty, $config = null, $postCreateConfigHook = null)
-        {
-                        /** @var \Mews\Purifier\Purifier $instance */
-                        return $instance->clean($dirty, $config, $postCreateConfigHook);
-        }
-                    /**
-         * Get HTMLPurifier instance.
-         *
-         * @return \HTMLPurifier 
-         * @static 
-         */        public static function getInstance()
-        {
-                        /** @var \Mews\Purifier\Purifier $instance */
-                        return $instance->getInstance();
-        }
-            }
-    }
-
 namespace Spatie\LaravelIgnition\Facades {
             /**
      * 
@@ -20570,10 +20538,10 @@ namespace Spatie\LaravelIgnition\Facades {
          * 
          *
          * @static 
-         */        public static function withStackFrameArguments($withStackFrameArguments = true)
+         */        public static function withStackFrameArguments($withStackFrameArguments = true, $forcePHPIniSetting = false)
         {
                         /** @var \Spatie\FlareClient\Flare $instance */
-                        return $instance->withStackFrameArguments($withStackFrameArguments);
+                        return $instance->withStackFrameArguments($withStackFrameArguments, $forcePHPIniSetting);
         }
                     /**
          * 
@@ -20838,6 +20806,52 @@ namespace Spatie\LaravelIgnition\Facades {
             }
     }
 
+namespace Illuminate\Support {
+            /**
+     * 
+     *
+     * @template TKey of array-key
+     * @template TValue
+     * @implements \ArrayAccess<TKey, TValue>
+     * @implements \Illuminate\Support\Enumerable<TKey, TValue>
+     */        class Collection {
+                    /**
+         * 
+         *
+         * @see \Barryvdh\Debugbar\ServiceProvider::register()
+         * @static 
+         */        public static function debug()
+        {
+                        return \Illuminate\Support\Collection::debug();
+        }
+                    /**
+         * 
+         *
+         * @see \Spatie\LaravelRay\RayServiceProvider::registerMacros()
+         * @param string $description
+         * @static 
+         */        public static function ray($description = '')
+        {
+                        return \Illuminate\Support\Collection::ray($description);
+        }
+            }
+            /**
+     * 
+     *
+     */        class Stringable {
+                    /**
+         * 
+         *
+         * @see \Spatie\LaravelRay\RayServiceProvider::registerMacros()
+         * @param string $description
+         * @static 
+         */        public static function ray($description = '')
+        {
+                        return \Illuminate\Support\Stringable::ray($description);
+        }
+            }
+    }
+
 namespace Illuminate\Http {
             /**
      * 
@@ -20895,52 +20909,6 @@ namespace Illuminate\Http {
          */        public static function hasValidSignatureWhileIgnoring($ignoreQuery = [], $absolute = true)
         {
                         return \Illuminate\Http\Request::hasValidSignatureWhileIgnoring($ignoreQuery, $absolute);
-        }
-            }
-    }
-
-namespace Illuminate\Support {
-            /**
-     * 
-     *
-     * @template TKey of array-key
-     * @template TValue
-     * @implements \ArrayAccess<TKey, TValue>
-     * @implements \Illuminate\Support\Enumerable<TKey, TValue>
-     */        class Collection {
-                    /**
-         * 
-         *
-         * @see \Barryvdh\Debugbar\ServiceProvider::register()
-         * @static 
-         */        public static function debug()
-        {
-                        return \Illuminate\Support\Collection::debug();
-        }
-                    /**
-         * 
-         *
-         * @see \Spatie\LaravelRay\RayServiceProvider::registerMacros()
-         * @param string $description
-         * @static 
-         */        public static function ray($description = '')
-        {
-                        return \Illuminate\Support\Collection::ray($description);
-        }
-            }
-            /**
-     * 
-     *
-     */        class Stringable {
-                    /**
-         * 
-         *
-         * @see \Spatie\LaravelRay\RayServiceProvider::registerMacros()
-         * @param string $description
-         * @static 
-         */        public static function ray($description = '')
-        {
-                        return \Illuminate\Support\Stringable::ray($description);
         }
             }
     }
@@ -24340,7 +24308,6 @@ namespace  {
             class Pdf extends \Barryvdh\DomPDF\Facade\Pdf {}
             class Horizon extends \Laravel\Horizon\Horizon {}
             class Socialite extends \Laravel\Socialite\Facades\Socialite {}
-            class Purifier extends \Mews\Purifier\Facades\Purifier {}
             class Flare extends \Spatie\LaravelIgnition\Facades\Flare {}
     }
 
