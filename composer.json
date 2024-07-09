@@ -57,7 +57,7 @@
         "fakerphp/faker": "^1.9.1",
         "laravel/dusk": "^7.13",
         "laravel/pint": "^1.0",
-        "laravel/sail": "^1.0.1",
+        "laravel/sail": "^1.30",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^6.1",
         "phpunit/phpunit": "^9.5.10",
