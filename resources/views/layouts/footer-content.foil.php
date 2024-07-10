@@ -1,8 +1,8 @@
-<footer class="footer p-3 mt-auto bg-dark">
-    <div class="navbar-nav w-100 text-light text-center">
+<footer class="p-3 mt-auto footer bg-dark">
+    <div class="text-center navbar-nav w-100 text-light">
         <div>
             <small>
-                IXP Manager V<?= APPLICATION_VERSION ?>
+                IXP Manager V<?= APPLICATION_VERSION; ?>
 
                 &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -17,23 +17,23 @@
                 Discover IXP Manager at:
 
                 <a href="https://www.ixpmanager.org/">
-                    <i class="fa fa-globe fa-inverse mx-1"></i>
+                    <i class="mx-1 fa fa-globe fa-inverse"></i>
                 </a>
 
                 <a href="https://www.facebook.com/ixpmanager">
-                    <i class="fa fa-facebook fa-inverse mx-1" ></i>
+                    <i class="mx-1 fa fa-facebook fa-inverse" ></i>
                 </a>
 
                 <a  href="https://twitter.com/ixpmanager">
-                    <i class="fa fa-twitter fa-inverse mx-1"></i>
+                    <i class="mx-1 fa fa-twitter fa-inverse"></i>
                 </a>
 
                 <a  href="https://github.com/inex/IXP-Manager">
-                    <i class="fa fa-github fa-inverse mx-1"></i>
+                    <i class="mx-1 fa fa-github fa-inverse"></i>
                 </a>
 
                 <a  href="https://docs.ixpmanager.org/">
-                    <i class="fa fa-book fa-inverse mx-1"></i>
+                    <i class="mx-1 fa fa-book fa-inverse"></i>
                 </a>
 
             </small>

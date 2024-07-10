@@ -47,6 +47,15 @@ mix
             ]
     });
 
+// mix
+//     .sass('resources/scss/main.scss', 'public/css')
+//     .options({
+//             processCssUrls: false,
+//             postCss: [
+//                 require('tailwindcss')('./tailwind.config.js')
+//             ]
+//     });
+
 
 mix.styles(
     [
@@ -66,3 +75,4 @@ mix.styles(
 ).version();
 
 mix.copyDirectory( 'node_modules/font-awesome/fonts', 'public/fonts' );
+
