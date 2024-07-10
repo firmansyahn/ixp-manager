@@ -25,7 +25,7 @@
         <?php $this->stop() ?>
     </head>
 
-    <body class="d-flex flex-column h-100">
+    <body class="d-flex flex-column h-100 tw-font-figtree">
         <header>
             <?php
             use IXP\Models\User;
@@ -61,16 +61,16 @@
 
                 <div id="slide-reveal-overlay" class="collapse"></div>
                 <?php if( $authCheck && $privs === User::AUTH_SUPERUSER && !$is2faAuthRequiredForSession ): ?>
-                    <main role="main" id="main-div" class="col-md-9 ml-sm-auto col-lg-9 col-xl-10 mt-2 pb-4">
+                    <main role="main" id="main-div" class="pb-4 mt-2 col-md-9 ml-sm-auto col-lg-9 col-xl-10">
                  <?php else: ?>
-                    <main role="main" id="main-div" class="col-md-10 mx-sm-auto mt-2 pb-4">
+                    <main role="main" id="main-div" class="pb-4 mt-2 col-md-10 mx-sm-auto">
                 <?php endif; ?>
-                      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                      <div class="flex-wrap pt-3 pb-2 mb-3 d-flex justify-content-between flex-md-nowrap align-items-center border-bottom">
                           <h3>
                               <?php $this->section( 'page-header-preamble' ) ?>
                               <?php $this->stop() ?>
                           </h3>
-                          <div class="btn-toolbar mb-2 mb-md-0 ml-auto">
+                          <div class="mb-2 ml-auto btn-toolbar mb-md-0">
                               <?php $this->section( 'page-header-postamble' ) ?>
                               <?php $this->stop() ?>
                           </div>

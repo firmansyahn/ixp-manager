@@ -25,7 +25,7 @@
         @section('headers')
     </head>
 
-    <body class="h-screen antialiased bg-gray-50 dark:bg-neutral-800 font-inter">
+    <body class="d-flex flex-column h-100 font-weight-normal">
         <header>
             @php
             use IXP\Models\User;
@@ -39,17 +39,17 @@
                 $privs      = Auth::getUser()->privs();
             }
 
-            // if( !$authCheck || Session::exists( "2fa-" . Auth::id() ) ) {
-            //     echo $t->insert("layouts/menus/public");
-            // } elseif( $privs === User::AUTH_CUSTUSER && Auth::getUser()->customer->typeAssociate() ) {
-            //     echo $t->insert("layouts/menus/associate");
-            // } elseif( $privs === User::AUTH_CUSTADMIN ) {
-            //     echo $t->insert( "layouts/menus/custadmin" );
-            // } elseif( $privs === User::AUTH_CUSTUSER ) {
-            //     echo $t->insert("layouts/menus/custuser");
-            // } elseif( $privs === User::AUTH_SUPERUSER ) {
-            //     echo $t->insert("layouts/menus/superuser");
-            // }
+            if( !$authCheck || Session::exists( "2fa-" . Auth::id() ) ) {
+                echo @include("layouts/menus/public");
+            } elseif( $privs === User::AUTH_CUSTUSER && Auth::getUser()->customer->typeAssociate() ) {
+                echo @include("layouts/menus/associate");
+            } elseif( $privs === User::AUTH_CUSTADMIN ) {
+                echo @include( "layouts/menus/custadmin" );
+            } elseif( $privs === User::AUTH_CUSTUSER ) {
+                echo @include("layouts/menus/custuser");
+            } elseif( $privs === User::AUTH_SUPERUSER ) {
+                echo @include("layouts/menus/superuser");
+            }
             @endphp
         </header>
 
@@ -78,6 +78,7 @@
                       <div class="container-fluid">
                           <div class="col-sm-12">
                               @section('content')
+                              @show
                           </div>
                       </div>
                   </main>

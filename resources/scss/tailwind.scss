@@ -11,6 +11,75 @@
  */
 @tailwind base;
 
+@layer base {
+  // @import url('public/fonts/figtree/latin.css');
+  // @import "./node_modules/@fontsource/figtree/latin.css";
+
+  /* figtree-latin-300-normal */
+  @font-face {
+    font-family: 'Figtree';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 300;
+    src: url(./files/figtree-latin-300-normal.woff2) format('woff2'), url(./files/figtree-latin-300-normal.woff) format('woff');
+  }
+
+  /* figtree-latin-400-normal */
+  @font-face {
+    font-family: 'Figtree';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url(./files/figtree-latin-400-normal.woff2) format('woff2'), url(./files/figtree-latin-400-normal.woff) format('woff');
+  }
+
+  /* figtree-latin-500-normal */
+  @font-face {
+    font-family: 'Figtree';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 500;
+    src: url(./files/figtree-latin-500-normal.woff2) format('woff2'), url(./files/figtree-latin-500-normal.woff) format('woff');
+  }
+
+  /* figtree-latin-600-normal */
+  @font-face {
+    font-family: 'Figtree';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 600;
+    src: url(./files/figtree-latin-600-normal.woff2) format('woff2'), url(./files/figtree-latin-600-normal.woff) format('woff');
+  }
+
+  /* figtree-latin-700-normal */
+  @font-face {
+    font-family: 'Figtree';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 700;
+    src: url(./files/figtree-latin-700-normal.woff2) format('woff2'), url(./files/figtree-latin-700-normal.woff) format('woff');
+  }
+
+  /* figtree-latin-800-normal */
+  @font-face {
+    font-family: 'Figtree';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 800;
+    src: url(./files/figtree-latin-800-normal.woff2) format('woff2'), url(./files/figtree-latin-800-normal.woff) format('woff');
+  }
+
+  /* figtree-latin-900-normal */
+  @font-face {
+    font-family: 'Figtree';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 900;
+    src: url(./files/figtree-latin-900-normal.woff2) format('woff2'), url(./files/figtree-latin-900-normal.woff) format('woff');
+  }
+
+}
+
 /**
  * This injects any component classes registered by plugins.
  *
@@ -245,7 +314,7 @@ a:hover {
  ****************************************************************************************/
 
 .btn {
-    @apply tw-font-bold tw-rounded-sm tw-border-transparent;
+    @apply tw-rounded-md tw-border-transparent;
 }
 
 .btn:hover {
@@ -253,7 +322,7 @@ a:hover {
 }
 
 .btn-primary {
-    @apply tw-bg-blue-500 tw-text-white tw-font-bold;
+    @apply tw-bg-blue-500 tw-text-white;
 }
 
 .btn-primary:hover {
@@ -261,7 +330,7 @@ a:hover {
 }
 
 .btn-success {
-    @apply tw-bg-green-500 tw-text-white tw-font-bold;
+    @apply tw-bg-green-500 tw-text-white;
 }
 
 .btn-success:hover {
@@ -269,7 +338,7 @@ a:hover {
 }
 
 .btn-secondary {
-    @apply tw-bg-grey-dark tw-text-white tw-font-bold;
+    @apply tw-bg-grey-dark tw-text-white;
 }
 
 .btn-secondary:hover {
@@ -317,7 +386,7 @@ input.form-control:focus{
 }
 
 label.control-label, label.form-check-label{
-    @apply tw-block tw-text-grey-darker tw-text-sm tw-font-bold;
+    @apply tw-block tw-text-grey-darker tw-text-base;
 }
 
 
@@ -361,7 +430,7 @@ label.control-label, label.form-check-label{
 
 
 a{
-    @apply tw-inline-block tw-align-baseline tw-font-bold tw-text-blue-light;
+    @apply tw-inline-block tw-align-baseline tw-text-blue-light;
 }
 
 a:hover{

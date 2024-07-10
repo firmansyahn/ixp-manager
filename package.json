@@ -36,6 +36,7 @@
     "vue": "^2.6.11"
   },
   "dependencies": {
+    "@fontsource/figtree": "^5.0.20",
     "@fontsource/inter": "^5.0.19",
     "@popperjs/core": "^2.9.0",
     "@webpack-cli/init": "^1.1.3",

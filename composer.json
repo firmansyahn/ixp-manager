@@ -15,6 +15,11 @@
             "name": "Nick Hilliard",
             "email": "nick@inex.ie",
             "homepage": "https://www.ixpmanager.org/"
+        },
+        {
+            "name": "Firmansyah Nainggolan",
+            "email": "firmansyah@nainggolan.id",
+            "homepage": "https://firmansyah.nainggolan.id"
         }
     ],
     "repositories":[

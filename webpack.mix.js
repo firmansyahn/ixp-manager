@@ -68,6 +68,7 @@ mix.styles(
 
         'public/css/ixp-manager.css',
         'public/css/tailwind.css',
+        // 'public/fonts/figtree/latin.css',
         // etc. etc.
     ],
     'public/css/ixp-pack.css',
@@ -75,4 +76,4 @@ mix.styles(
 ).version();
 
 mix.copyDirectory( 'node_modules/font-awesome/fonts', 'public/fonts' );
-
+// mix.copyDirectory( 'node_modules/@fontsource/figtree', 'public/fonts/figtree' );
