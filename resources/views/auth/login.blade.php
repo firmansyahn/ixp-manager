@@ -9,7 +9,11 @@
 @section('content')
 <div class="row">
     <div class="col-12">
-        {{-- {{ alerts() }} --}}
+        @php
+        // use IXP\Utils\View\Alert;
+        // $t->alerts();
+        @endphp
+
         <div class="tw-text-center tw-my-6">
             @if(config("identity.biglogo"))
                 <img class="tw-inline img-fluid" src="{{ config( "identity.biglogo" ) }}" />
@@ -29,7 +33,7 @@
     <div class="col-12">
         <div class="tw-w-full tw-max-w-sm tw-mx-auto">
             <form method="POST" action="{{ route('login@login') }}"
-                class="tw-bg-white tw-shadow-md tw-rounded-2xl tw-px-8 tw-pt-6 tw-pb-8 tw-mb-6">
+                class="tw-bg-white tw-shadow-md tw-rounded-xl tw-px-8 tw-pt-6 tw-pb-8 tw-mb-6">
             @csrf
 
                 <div class="tw-mb-6">

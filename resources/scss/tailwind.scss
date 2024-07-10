@@ -275,7 +275,7 @@ a:hover {
 }
 
 .nav-link {
-  @apply tw-block tw-p-2 tw-pl-3 tw-text-grey-darker tw-no-underline tw-text-sm;
+  @apply tw-block tw-p-2 tw-pl-3 tw-text-grey-darker tw-no-underline 
 }
 
 .nav-link:hover {
@@ -346,7 +346,7 @@ a:hover {
 }
 
 .btn-outline-secondary{
-    @apply tw-bg-transparent tw-text-grey tw-font-semibold tw-border-1 tw-border-grey tw-rounded-sm
+    @apply tw-bg-transparent tw-text-grey tw-font-semibold tw-border-1 tw-border-grey
 }
 
 .btn-outline-secondary:hover{
@@ -354,7 +354,7 @@ a:hover {
 }
 
 .btn-white{
-    @apply tw-bg-white tw-text-grey-darkest tw-font-semibold tw-border-1 tw-border-grey-light tw-rounded-sm shadow;
+    @apply tw-bg-white tw-text-grey-darkest tw-font-semibold tw-border-1 tw-border-grey-light shadow;
 }
 
 .btn-white:hover{
@@ -374,7 +374,7 @@ a:hover {
  ****************************************************************************************/
 
 input.form-control{
-    @apply shadow tw-appearance-none tw-border-1 tw-rounded-sm tw-w-full tw-py-2 tw-px-4 tw-text-grey-darker tw-leading-tight;
+    @apply shadow tw-appearance-none tw-border-1 tw-rounded-sm tw-w-full tw-py-2 tw-px-4 tw-text-grey-darker tw-leading-tight tw-rounded-md;
 }
 
 input.form-control:focus{
@@ -421,11 +421,11 @@ label.control-label, label.form-check-label{
 
 .card{
     border-color : #dae1e7;
-    @apply shadow tw-rounded-sm;
+    @apply shadow tw-rounded-lg;
  }
 
  .card .card-header{
-    @apply tw-rounded-tl-sm tw-rounded-tr-sm tw-border-b-0;
+    @apply tw-rounded-tl-md tw-rounded-tr-md tw-border-b-0;
  }
 
 

@@ -30,27 +30,29 @@
             @php
             use IXP\Models\User;
             
-            // We used to manage these menus with a lot of if / elseif / else clauses. It was a mess.
-            // Despite the drawbacks of replication, it's easier - by a distance - to mainatin standalone
-            // menu templates per user type:
+            /*
+             * We used to manage these menus with a lot of if / elseif / else clauses. It was a mess.
+             * Despite the drawbacks of replication, it's easier - by a distance - to mainatin standalone
+             * menu templates per user type:
+             */
             $authCheck  = Auth::check();
             if( $authCheck ){
                 $is2faAuthRequiredForSession = Auth::getUser()->is2faAuthRequiredForSession();
                 $privs      = Auth::getUser()->privs();
             }
-
-            if( !$authCheck || Session::exists( "2fa-" . Auth::id() ) ) {
-                echo @include("layouts/menus/public");
-            } elseif( $privs === User::AUTH_CUSTUSER && Auth::getUser()->customer->typeAssociate() ) {
-                echo @include("layouts/menus/associate");
-            } elseif( $privs === User::AUTH_CUSTADMIN ) {
-                echo @include( "layouts/menus/custadmin" );
-            } elseif( $privs === User::AUTH_CUSTUSER ) {
-                echo @include("layouts/menus/custuser");
-            } elseif( $privs === User::AUTH_SUPERUSER ) {
-                echo @include("layouts/menus/superuser");
-            }
             @endphp
+
+            @if( !$authCheck || Session::exists( "2fa-" . Auth::id() ) )
+                @include("layouts.menus.public");
+            @elseif( $privs === User::AUTH_CUSTUSER && Auth::getUser()->customer->typeAssociate() )
+                @include("layouts/menus/associate");
+            @elseif( $privs === User::AUTH_CUSTADMIN )
+                @include( "layouts/menus/custadmin" );
+            @elseif( $privs === User::AUTH_CUSTUSER )
+                @include("layouts.menus.custuser");
+            @elseif( $privs === User::AUTH_SUPERUSER )
+                @include("layouts.menus.superuser");
+            @endif
         </header>
 
         <div class="container-fluid">
