@@ -23,7 +23,7 @@
         @section('headers')
     </head>
 
-    <body class="d-flex flex-column h-100 font-weight-normal tw-font-figtree">
+    <body class="d-flex flex-column h-100 tw-font-normal tw-font-figtree tw-bg-gray-50">
         <header>
             <x-navbar.topnav-public />
         </header>

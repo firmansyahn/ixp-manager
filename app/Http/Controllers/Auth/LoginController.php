@@ -160,6 +160,7 @@ class LoginController extends Controller
         if( ( $cust = $user->customer ) && $user->customer()->active()->notDeleted()->doesntExist() ){
             $user->custid = $newCust->id;
             $user->save();
+
             AlertContainer::push( "The default " . config( "ixp_fe.lang.customer.one" ) . " " . ucfirst( $cust->abbreviatedName ) . " is no longer active. Your default " . config( "ixp_fe.lang.customer.one" ) . " is now " . ucfirst( $newCust->abbreviatedName ) . "." , Alert::WARNING );
         }
 
@@ -170,6 +171,7 @@ class LoginController extends Controller
         // Check if the user has a default customer OR if the default customer is no longer in the C2U, then assign one
         if( !$user->customer || !$c2u ){
             $user->custid = $newCust->id;
+
             $user->save();
         }
     }
@@ -337,6 +339,7 @@ class LoginController extends Controller
 
         Auth::login( $result['user'] );
         $this->authenticated( $r, $result['user'] );
+
         return redirect('');
     }
 }

@@ -126,6 +126,7 @@ Route::group([ 'namespace' => 'Auth' ], function() {
 
     Route::controller(\IXP\Http\Controllers\Auth\ResetPasswordController::class)->group(function () {
         Route::get('password/reset/{token}', 'showResetForm'       )->name( "reset-password@show-reset-form"   );
+        Route::get('password/reset', 'showResetForm'       )->name( "reset-password@show-reset-form"   );
         Route::post('password/reset',        'reset'               )->name( "reset-password@reset"             );
     });
  

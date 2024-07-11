@@ -1,6 +1,6 @@
 <x-layouts.guest>
 
-    <x-slot:title>Forget Password</x-slot:title>
+    <x-slot:title>Forgot Password</x-slot:title>
 
     <x-partials.identity-biglogo />
 
@@ -13,21 +13,14 @@
 
                     @csrf
 
-                    <p class="tw-mb-6 tw-text-grey-dark tw-font-bold">
+                    <p class="tw-mb-6">
                         Please enter your username and we will send you a password reset token by email.
                     </p>
 
                     <div class="tw-mb-16">
-                        <label class="control-label" for="username">
-                            Username
-                        </label>
-                        <input name="username" class="form-control" id="username" type="text" placeholder="Username" autofocus 
-                            value="{{ old('username') }}">
-                        @foreach( $errors->get( 'username' ) as $err )
-                            <p class="tw-text-red-500 tw-text-xs tw-italic tw-mt-2">
-                                {{ $err }}
-                            </p>
-                        @endforeach
+                        <x-form.label for="username" value="Username" />
+                        <x-form.input id="username" name="username" placeholder="Username" autofocus value="{{ old('username') }}" />
+                        <x-form.input-error for="username" />
                     </div>
 
                     <div class="tw-flex tw-items-center tw-justify-between">

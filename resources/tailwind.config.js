@@ -54,6 +54,16 @@ module.exports = {
     './app/**/*.php',
   ],
 
+  safelist: [
+    {
+      pattern: /(bg|border|font|text)-./,
+    },
+    {
+      pattern: /(underline)/,
+      variants: ['hover', 'focus'],
+    }
+  ],
+
   theme: {
 
     /*
@@ -72,21 +82,23 @@ module.exports = {
     |
     */
 
+    extend: {
+      colors: {
+        'grey-darkest': '#3d4852',
+        'grey-darker': '#606f7b',
+        'grey-dark': '#8795a1',
+        'grey': '#b8c2cc',
+        'grey-light': '#dae1e7',
+        'grey-lighter': '#f1f5f8',
+        'grey-lightest': '#f8fafc',
+      }
+    },
+
     colors: {
       'transparent': 'transparent',
 
-
       black: '#000',
       white: '#fff',
-
-
-      'grey-darkest': '#3d4852',
-      'grey-darker': '#606f7b',
-      'grey-dark': '#8795a1',
-      'grey': '#b8c2cc',
-      'grey-light': '#dae1e7',
-      'grey-lighter': '#f1f5f8',
-      'grey-lightest': '#f8fafc',
 
       'red-darkest': '#3b0d0c',
       'red-darker': '#621b18',
@@ -153,6 +165,7 @@ module.exports = {
 
 
       gray: {
+         50: '#f9fafb',
         100: '#f7fafc',
         200: '#edf2f7',
         300: '#e2e8f0',
@@ -262,6 +275,10 @@ module.exports = {
         800: '#97266d',
         900: '#702459',
       },
+      slate: {
+        50: '#f8fafc',
+        100: '#f1f5f9',
+      }
     },
 
 

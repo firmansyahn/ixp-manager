@@ -16,19 +16,19 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
                 Discover IXP Manager at:
 
-                <a href="https://www.ixpmanager.org/">
+                <a href="<?= config('identity.corporate_url') ?>">
                     <i class="mx-1 fa fa-globe fa-inverse"></i>
                 </a>
 
-                <a href="https://www.facebook.com/ixpmanager">
+                <a href="<?= config('social.facebook.url') ?>">
                     <i class="mx-1 fa fa-facebook fa-inverse" ></i>
                 </a>
 
-                <a  href="https://twitter.com/ixpmanager">
+                <a  href="<?= config('social.twitter.url') ?>">
                     <i class="mx-1 fa fa-twitter fa-inverse"></i>
                 </a>
 
-                <a  href="https://github.com/inex/IXP-Manager">
+                <a  href="<?= config('social.github.url') ?>">
                     <i class="mx-1 fa fa-github fa-inverse"></i>
                 </a>
 

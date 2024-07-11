@@ -7,26 +7,19 @@
     <div class="row">
         <div class="col-12">
             <div class="tw-w-full tw-max-w-sm tw-mx-auto">
-                @if ($message = session('email'))
-                    <span>{{ $message }}</span>
-                @endif
 
                 <form method="POST" action="{{ route('login@login') }}"
                     class="tw-bg-white tw-shadow-md tw-rounded-xl tw-px-8 tw-pt-6 tw-pb-8 tw-mb-6">
 
                     @csrf
                     <div class="tw-mb-6">
-                        <label class="tw-font-normal" for="username">
-                            Username
-                        </label>
+                        <x-form.label for="username" value="Username" />
                         <x-form.input id="username" name="username" placeholder="Username" autofocus value="{{ old('username') }}" />
                         <x-form.input-error for="username" />
                     </div>
 
                     <div class="tw-mb-6">
-                        <label class="tw-font-normal" for="password">
-                            Password
-                        </label>
+                        <x-form.label for="password" value="Password" />
                         <x-form.input id="password" name="password" type="password" placeholder="Password" />
                         <x-form.input-error for="password"/>
                     </div>
@@ -43,7 +36,7 @@
                     <div class="tw-flex tw-items-center tw-justify-between">
                         <a href="{{ route('forgot-password@show-form') }}"
                             class="tw-font-normal">
-                            Forgot Password?
+                            Forgot password?
                         </a>
 
                         <button id="login-btn" class="btn btn-primary tw-rounded-lg" type="submit">

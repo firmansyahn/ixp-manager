@@ -14,7 +14,7 @@
 <?php $this->append() ?>
 
 <?php $this->section( 'page-header-postamble' ) ?>
-    <div class="btn-group btn-group-sm ml-auto" role="group">
+    <div class="ml-auto btn-group btn-group-sm" role="group">
         <a target="_blank" class="btn btn-white" href="https://docs.ixpmanager.org/usage/customers">
             Documentation
         </a>
@@ -36,9 +36,9 @@
             Official <b>IXP Manager</b> documentation for adding / editing <?= config( 'ixp_fe.lang.customer.many' ) ?> can be found at <a href="http://docs.ixpmanager.org/usage/customers/">http://docs.ixpmanager.org/</a>.
         </div>
 
-        <div class="bg-light shadow-sm p-4">
+        <div class="p-4 shadow-sm bg-light">
             <p>
-                <b>Prepopulate this form from PeeringDB by entering the network ASN here:</b>
+                Prepopulate this form from PeeringDB by entering the network ASN here:
             </p>
 
             <div class="form-group d-flex">
@@ -53,14 +53,14 @@
         </div>
 
         <div class="mt-4 row">
-            <div class="col-lg-6 col-md-12 mb-4 mb-sm-0">
+            <div class="mb-4 col-lg-6 col-md-12 mb-sm-0">
                 <h3>
                     <?= ucfirst( config( 'ixp_fe.lang.customer.one' ) ) ?> Details
                 </h3>
                 <hr class="tw-mb-6">
 
                 <?= Former::text( 'name' )
-                    ->label( 'Name' )
+                    ->label( 'Name *' )
                     ->placeholder( "Acme Intermet Access" )
                     ->blockHelp( "The customer's name as you/they typically want it to appear in IXP Manager. It is not necessarily "
                         . "their full legal entity name (that goes elsewhere). The <em>abbreviated name</em> is a shorter version "
@@ -68,15 +68,16 @@
                 ?>
 
                 <?= Former::select( 'type' )
-                    ->label( 'Type' )
+                    ->label( 'Type *' )
                     ->fromQuery( \IXP\Models\Customer::$CUST_TYPES_TEXT )
                     ->placeholder( 'Choose Type' )
                     ->addClass( 'chzn-select' )
-                    ->blockHelp( 'Please see the external documentation referenced above for full details of customer types. For a normal IXP customer, you just want <code>Full</code>.' );
+                    ->blockHelp( 'Please see the external documentation referenced above for full details of customer types. For a normal '
+                        . 'IXP customer, you just want <code>Full</code>.' );
                 ?>
 
                 <?= Former::text( 'shortname' )
-                    ->label( 'Short Name' )
+                    ->label( 'Short Name *' )
                     ->placeholder( "acme" )
                     ->blockHelp( "Short name is something we are slowly removing. It is currently visible in some URLs and a couple other "
                         . "areas. It should be a lowercase single word (<code>[a-z0-9]</code>) and it should not be changed after it is set." );
@@ -91,7 +92,7 @@
                 ?>
 
                 <?= Former::date( 'datejoin' )
-                    ->label( 'Date Joined' )
+                    ->label( 'Date Joined *' )
                     ->blockHelp( 'The data this customer joined the exchange.' );
                 ?>
 
@@ -103,7 +104,7 @@
                 ?>
 
                 <?= Former::select( 'status' )
-                    ->label( 'Status' )
+                    ->label( 'Status *' )
                     ->fromQuery( \IXP\Models\Customer::$CUST_STATUS_TEXT )
                     ->placeholder( 'Choose Status' )
                     ->addClass( 'chzn-select' )
@@ -122,7 +123,7 @@
                 ?>
 
                 <?= Former::text( 'abbreviatedName' )
-                    ->label( 'Abbreviated Name' )
+                    ->label( 'Abbreviated Name *' )
                     ->placeholder( "Acme" )
                     ->blockHelp( "The Abbreviated Name is a shorter version of the name that is used in space constrained areas such as graph labels." );
                 ?>
@@ -148,7 +149,7 @@
                 <hr class="tw-mb-6">
 
                 <?= Former::number( 'autsys' )
-                    ->label( 'AS Number' )
+                    ->label( 'AS Number *' )
                     ->placeholder('65500')
                     ->blockHelp( 'The AS Number is just the integer value without any AS prefix, etc.' );
                 ?>
@@ -163,7 +164,7 @@
                 ?>
 
                 <?= Former::email( 'peeringemail' )
-                    ->label( 'Email' )
+                    ->label( 'Email *' )
                     ->placeholder( "peering@example.com" )
                     ->blockHelp( "The Peering Email is used in member lists and by the Peering Manager for sending emails. We encourage "
                         . "using a role alias such as peering@example.com." );
@@ -215,7 +216,7 @@
 
         <div class="flow-root"></div>
 
-        <div class="full-member-details row mt-4" style="<?=
+        <div class="mt-4 full-member-details row" style="<?=
         old( 'type' ) === \IXP\Models\Customer::TYPE_ASSOCIATE || ( $t->cust && $t->cust->typeAssociate() ) ? 'display: none;' : ''
         ?>">
             <div class="col-lg-6 col-md-12">
@@ -237,7 +238,7 @@
                 ?>
 
                 <?= Former::email( 'nocemail' )
-                    ->label( 'Email' )
+                    ->label( 'Email *' )
                     ->placeholder( 'noc@example.com' )
                     ->blockHelp( 'The NOC email is used in customer lists. We encourage "
             . "the use of a role alias such as noc@example.com.<br><br>'
