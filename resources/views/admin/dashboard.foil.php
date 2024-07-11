@@ -605,9 +605,9 @@
 
                     <?php if( count( $t->graphs ) ): ?>
                         <?php foreach( $t->graphs as $id => $graph ): ?>
-                            <div class="card mb-4">
+                            <div class="mb-4 card">
                                 <div class="card-header ">
-                                    <h5 class="d-flex mb-0">
+                                    <h5 class="mb-0 d-flex">
                                         <span class="mr-auto">
                                             <?= $t->ee( $graph->name() ) ?> Aggregate Traffic
                                         </span>
@@ -630,7 +630,7 @@
                         <?php endforeach; ?>
                     <?php else: ?>
 
-                    <div class="card mb-4">
+                    <div class="mb-4 card">
                         <div class="card-header ">
                             <h3 class="mb-0">
                                 Configure Your Aggregate Graph(s)

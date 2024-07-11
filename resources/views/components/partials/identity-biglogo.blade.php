@@ -1,5 +1,4 @@
 @props([
-    'alert',
     'title' => '[Your Logo Here]',
     'description' => 'Configure <code>IDENTITY_BIGLOGO</code> in <code>.env</code>.',
 ])

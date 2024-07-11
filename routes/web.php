@@ -109,20 +109,26 @@ Route::group( [ 'prefix' => 'statistics' ], function() {
 ///
 /// Authentication routes
 ///
-Route::group( [ 'namespace' => 'Auth' ], function() {
-    Route::get( 'logout',                   'LoginController@logout'                                )->name( "login@logout"                     );
-    Route::get( 'login',                    'LoginController@showLoginForm'                         )->name( "login@showForm"                   );
-    Route::post('login',                    'LoginController@login'                                 )->name( "login@login"                      );
+Route::group([ 'namespace' => 'Auth' ], function() {
 
-    Route::get( 'password/forgot',          'ForgotPasswordController@showLinkRequestForm'          )->name( "forgot-password@show-form"        );
-    Route::post('password/forgot',          'ForgotPasswordController@sendResetLinkEmail'           )->name( "forgot-password@reset-email"      );
+    Route::controller(\IXP\Http\Controllers\Auth\LoginController::class)->group(function () {
+        Route::get('logout',                 'logout'              )->name("login@logout");
+        Route::get('login',                  'showLoginForm'       )->name("login@showForm");
+        Route::post('login',                 'login'               )->name("login@login");
+    });
 
-    Route::get( 'password/reset/{token}',   'ResetPasswordController@showResetForm'                 )->name( "reset-password@show-reset-form"   );
-    Route::post('password/reset',           'ResetPasswordController@reset'                         )->name( "reset-password@reset"             );
+    Route::controller(\IXP\Http\Controllers\Auth\ForgotPasswordController::class)->group(function () {
+        Route::get('password/forgot',        'showLinkRequestForm' )->name( "forgot-password@show-form"        );
+        Route::post('password/forgot',       'sendResetLinkEmail'  )->name( "forgot-password@reset-email"      );
+        Route::get('username',               'showUsernameForm'    )->name( "forgot-password@showUsernameForm" );
+        Route::post('forgot-username',       'sendUsernameEmail'   )->name( "forgot-password@username-email"   );
+    });
 
-    Route::get( 'username',                 'ForgotPasswordController@showUsernameForm'             )->name( "forgot-password@showUsernameForm" );
-    Route::post('forgot-username',          'ForgotPasswordController@sendUsernameEmail'            )->name( "forgot-password@username-email"   );
-
+    Route::controller(\IXP\Http\Controllers\Auth\ResetPasswordController::class)->group(function () {
+        Route::get('password/reset/{token}', 'showResetForm'       )->name( "reset-password@show-reset-form"   );
+        Route::post('password/reset',        'reset'               )->name( "reset-password@reset"             );
+    });
+ 
     // PeeringDB OAuth
     Route::group( [ 'prefix' => 'auth/login/peeringdb' ], function() {
         Route::get('',          'LoginController@peeringdbRedirectToProvider'       )->name('auth:login-peeringdb' );

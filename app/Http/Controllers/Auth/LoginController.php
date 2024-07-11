@@ -28,6 +28,7 @@ use Auth, Socialite, Str;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 use Illuminate\Http\{
+    JsonResponse,
     RedirectResponse,
     Request
 };
@@ -196,19 +197,28 @@ class LoginController extends Controller
     /**
      * Log the user out of the application.
      *
-     * @param   Request      $r
+     * @param  \Illuminate\Http\Request  $request
      * @param   array|null   $customMessage Custom message to display
      *
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
      */
-    public function logout( Request $r, $customMessage = null ): Response
+    public function logout(Request $request, $customMessage = null)
     {
         $this->guard()->logout();
-        $r->session()->invalidate();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
 
         AlertContainer::push( $customMessage ? $customMessage[ "message" ] : "You have been logged out." , $customMessage ? $customMessage[ "class" ] : Alert::SUCCESS );
 
-        return redirect('');
+        if ($response = $this->loggedOut($request)) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+            ? new JsonResponse([], 204)
+            : redirect('/');
     }
 
     /**
