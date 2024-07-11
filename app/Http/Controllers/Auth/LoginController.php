@@ -33,7 +33,7 @@ use Illuminate\Http\{
 };
 
 use Illuminate\Routing\Redirector;
-
+use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
 use IXP\Http\Controllers\Controller;
@@ -176,16 +176,21 @@ class LoginController extends Controller
     /**
      * Get the failed login response instance.
      *
-     * @param Request       $r
+     * @param Request       $request
      * @param string|null   $msg
      *
-     * @return Response
+     * @return \Symfony\Component\HttpFoundation\Response
+     *   
+     * @throws \Illuminate\Validation\ValidationException
      */
-    protected function sendFailedLoginResponse( Request $r, $msg = null ): Response
+    protected function sendFailedLoginResponse(Request $request, $msg = null): Response
     {
         AlertContainer::push( $msg ?? "Invalid username or password. Please try again." , Alert::DANGER );
     
-        return redirect()->back()->withInput( $r->only('username') );
+        // return redirect()->back()->withInput($r->only('username'));
+        throw ValidationException::withMessages([
+            $this->username() => [trans('auth.failed')],
+        ]);
     }
 
     /**

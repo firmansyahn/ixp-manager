@@ -7,6 +7,10 @@
     <div class="row">
         <div class="col-12">
             <div class="tw-w-full tw-max-w-sm tw-mx-auto">
+                @if ($message = session('email'))
+                    <span>{{ $message }}</span>
+                @endif
+
                 <form method="POST" action="{{ route('login@login') }}"
                     class="tw-bg-white tw-shadow-md tw-rounded-xl tw-px-8 tw-pt-6 tw-pb-8 tw-mb-6">
 
@@ -15,20 +19,16 @@
                         <label class="tw-font-normal" for="username">
                             Username
                         </label>
-                        <input name="username" class="form-control" id="username" type="text" placeholder="Username" autofocus value="{{ old('username') }}">
-                        @foreach( $errors->get('username') as $err )
-                            <p class="tw-text-red-500 tw-text-xs tw-italic tw-mt-2">{{ ee($err) }}</p>
-                        @endforeach
+                        <x-form.input id="username" name="username" placeholder="Username" autofocus value="{{ old('username') }}" />
+                        <x-form.input-error for="username" />
                     </div>
 
                     <div class="tw-mb-6">
                         <label class="tw-font-normal" for="password">
                             Password
                         </label>
-                        <input name="password" class="form-control" id="password" type="password" placeholder="...">
-                        @foreach( $errors->get('password') as $err )
-                            <p class="tw-text-red-500 tw-text-xs tw-italic tw-mt-2">{{ ee($err) }}</p>
-                        @endforeach
+                        <x-form.input id="password" name="password" type="password" placeholder="Password" />
+                        <x-form.input-error for="password"/>
                     </div>
 
                     <div class="tw-mb-6">
