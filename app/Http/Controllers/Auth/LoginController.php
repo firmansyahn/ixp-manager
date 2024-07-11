@@ -162,7 +162,9 @@ class LoginController extends Controller
             AlertContainer::push( "The default " . config( "ixp_fe.lang.customer.one" ) . " " . ucfirst( $cust->abbreviatedName ) . " is no longer active. Your default " . config( "ixp_fe.lang.customer.one" ) . " is now " . ucfirst( $newCust->abbreviatedName ) . "." , Alert::WARNING );
         }
 
-        $c2u = CustomerToUser::where( [ 'user_id' => $user->id ] )->where( [ "customer_id" => $user->custid ] )->first();
+        $c2u = CustomerToUser::where( [ 'user_id' => $user->id ] )
+                                ->where( [ "customer_id" => $user->custid ] )
+                                ->first();
 
         // Check if the user has a default customer OR if the default customer is no longer in the C2U, then assign one
         if( !$user->customer || !$c2u ){
@@ -179,9 +181,10 @@ class LoginController extends Controller
      *
      * @return Response
      */
-    protected function sendFailedLoginResponse( Request $r, $msg = null ) : Response
+    protected function sendFailedLoginResponse( Request $r, $msg = null ): Response
     {
         AlertContainer::push( $msg ?? "Invalid username or password. Please try again." , Alert::DANGER );
+    
         return redirect()->back()->withInput( $r->only('username') );
     }
 
@@ -193,12 +196,13 @@ class LoginController extends Controller
      *
      * @return Response
      */
-    public function logout( Request $r, $customMessage = null ) : Response
+    public function logout( Request $r, $customMessage = null ): Response
     {
         $this->guard()->logout();
         $r->session()->invalidate();
 
         AlertContainer::push( $customMessage ? $customMessage[ "message" ] : "You have been logged out." , $customMessage ? $customMessage[ "class" ] : Alert::SUCCESS );
+
         return redirect('');
     }
 
@@ -211,6 +215,7 @@ class LoginController extends Controller
     {
         if( Auth::check() ) {
             AlertContainer::push( "You are already logged in - Login via PeeringDB aborted." , Alert::WARNING );
+
             return redirect('');
         }
 
@@ -219,7 +224,8 @@ class LoginController extends Controller
         }
 
         AlertContainer::push( "Login with PeeringDB not enabled." , Alert::DANGER );
-        return redirect( route('login@showForm' ) );
+
+        return redirect( route('login@showForm') );
     }
 
     /**
