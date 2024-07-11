@@ -2,27 +2,7 @@
 
     <x-slot:title>Login</x-slot:title>
 
-    <div class="row">
-        <div class="col-12">
-            @php
-            // use IXP\Utils\View\Alert;
-            // $t->alerts();
-            @endphp
-
-            <div class="tw-text-center tw-my-6">
-                @if( config("identity.biglogo") )
-                    <img class="tw-inline img-fluid" src="{{ config("identity.biglogo") }}" />
-                @else
-                    <h2>
-                        [Your Logo Here]
-                    </h2>
-                    <div>
-                        Configure <code>IDENTITY_BIGLOGO</code> in <code>.env</code>.
-                    </div>
-                @endif
-            </div>
-        </div>
-    </div>
+    <x-partials.identity-biglogo />
 
     <div class="row">
         <div class="col-12">

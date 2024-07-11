@@ -23,10 +23,9 @@
         @section('headers')
     </head>
 
-    <body class="d-flex flex-column h-100 font-weight-normal">
+    <body class="d-flex flex-column h-100 font-weight-normal tw-font-figtree">
         <header>
-            {{-- @include("layouts.menus.public"); --}}
-            <x-partials.menu-public />
+            <x-navbar.topnav-public />
         </header>
 
         <div class="container-fluid">
@@ -52,13 +51,13 @@
             </div> <!-- </div class="row"> -->
         </div> <!-- </div class="container"> -->
 
-        @include('layouts.base.footer-content')
+        <x-layouts.footer-content />
 
         <script type="text/javascript" src="{{ url ('') . mix('js/ixp-pack.js') }}"></script>
 
         @section('scripts')
 
-        @include('layouts.base.footer-custom')
+        <x-layouts.footer-custom />
 
         {{-- @vite(['resources/js/main.js']) --}}
     </body>
