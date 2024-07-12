@@ -253,15 +253,13 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        'Countries' => Webpatser\Countries\CountriesFacade::class,
+        'Former'    => Former\Facades\Former::class,
+        'Google2FA' => PragmaRX\Google2FALaravel\Facade::class,
         'Grapher'   => IXP\Support\Facades\Grapher::class,
         'Image'     => Intervention\Image\Facades\Image::class,
+        'PDF'       => Barryvdh\DomPDF\Facade\Pdf::class,
 
-        'Former'    => Former\Facades\Former::class,
-        'PDF'       => Barryvdh\DomPDF\Facade::class,
-
-        'Countries' => Webpatser\Countries\CountriesFacade::class,
-
-        'Google2FA' => PragmaRX\Google2FALaravel\Facade::class,
         // 'ExampleClass' => App\Example\ExampleClass::class,
         
     ])->toArray(),
