@@ -119,6 +119,7 @@ class RouterController extends Controller
     {
         if( !FacadeView::exists( $r->template ) ) {
             AlertContainer::push( 'The template you entered cannot be found. Please check the help message for more information.', Alert::DANGER );
+
             return Redirect::to( route( 'router@create' ) )->withInput( $r->all() );
         }
 
@@ -127,6 +128,7 @@ class RouterController extends Controller
         $this->checkASN32( $router );
 
         AlertContainer::push( 'Router created.', Alert::SUCCESS );
+
         return Redirect::to( route( "router@list" ) );
     }
 

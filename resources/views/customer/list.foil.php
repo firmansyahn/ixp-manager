@@ -113,7 +113,8 @@
                 ?>
                 <tr>
                     <td>
-                        <a href="<?= route( "customer@overview" , [ 'cust' => $c->id ] ) ?>">
+                        <a href="<?= route( "customer@overview" , [ 'cust' => $c->id ] ) ?>"
+                            class="hover:tw-underline">
                             <?= $t->ee( $c->name ) ?>
                         </a>
                     </td>
@@ -141,11 +142,8 @@
                     </td>
                     <td>
                         <div class="btn-group btn-group-sm" role="group">
-                            <a class="btn btn-white" href="<?= route( "customer@overview" , [ 'cust' => $c->id ] ) ?>" title="Overview">
-                                <i class="fa fa-eye"></i>
-                            </a>
-                            <a class="btn btn-white" href="<?= route ( "customer@delete-recap", [ "cust" => $c->id ] )   ?>" title="Delete">
-                                <i class="fa fa-trash"></i>
+                            <a class="btn btn-danger" href="<?= route ( "customer@delete-recap", [ "cust" => $c->id ] )   ?>" title="Delete">
+                                <i class="fa fa-trash tw-text-white"></i>
                             </a>
                         </div>
                     </td>

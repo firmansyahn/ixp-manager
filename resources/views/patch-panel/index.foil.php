@@ -27,9 +27,9 @@
 <?php $this->section('content') ?>
     <div class="row">
         <div class="col-md-12">
-            <nav id="filter-row" class="collapse navbar navbar-expand-lg navbar-light bg-light mb-4 shadow-sm">
+            <nav id="filter-row" class="mb-4 shadow-sm collapse navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="<?= route( "patch-panel@list" ) ?>">Filter Options:</a>
-                <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="float-right navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -106,7 +106,7 @@
                             <i class="fa fa-question-circle fa-2x"></i>
                         </div>
                         <div class="col-sm-12">
-                            <b>No active patch panels exist.</b>
+                            No active patch panels exist.
                             <a class="btn btn-white" href="<?= route( 'patch-panel@create' ) ?>">
                                 Create one...
                             </a>

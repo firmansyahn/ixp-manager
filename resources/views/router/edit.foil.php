@@ -51,7 +51,7 @@
                     ?>
 
                     <?= Former::text( 'handle' )
-                        ->label( 'Handle' )
+                        ->label( 'Handle*' )
                         ->placeholder( 'rs1-lan1-ipv4' )
                         ->blockHelp( "The handle is like the router's name. It is suggested you use something like: <code>purpose-lan-proto</code>. A
                     good example of this is <code>rs1-lan1-ipv4</code> for <em>route server #1</em> on <em>lan1</em> using <em>IPv4</em>.
@@ -74,21 +74,21 @@
 
 
                     <?= Former::select( 'vlan_id' )
-                        ->label( 'Vlan' )
+                        ->label( 'VLAN*' )
                         ->fromQuery( $t->vlans, 'name' )
                         ->placeholder( 'Choose a VLAN' )
                         ->addClass( 'chzn-select' );
                     ?>
 
                     <?= Former::select( 'protocol' )
-                        ->label( 'Protocol' )
+                        ->label( 'Protocol *' )
                         ->fromQuery( \IXP\Models\Router::$PROTOCOLS )
                         ->placeholder( 'Choose the protocol' )
                         ->addClass( 'chzn-select' );
                     ?>
 
                     <?= Former::select( 'type' )
-                        ->label( 'Type' )
+                        ->label( 'Type*' )
                         ->fromQuery( \IXP\Models\Router::$TYPES )
                         ->placeholder( 'Choose a type / function' )
                         ->addClass( 'chzn-select' )
@@ -97,14 +97,14 @@
                     ?>
 
                     <?= Former::text( 'name' )
-                        ->label( 'Name' )
+                        ->label( 'Name *' )
                         ->placeholder('Route Server #1 - IXP LAN1 - IPv4')
                         ->blockHelp( "A long descriptive name for the router. Following the example of the handle above 
                     (<code>rs1-lan1-ipv4</code>), we would use the following here: <em>Route Server #1 - IXP LAN1 - IPv4</em>." );
                     ?>
 
                     <?= Former::text( 'shortname' )
-                        ->label( 'ShortName' )
+                        ->label( 'ShortName*' )
                         ->placeholder('RS1 - LAN1 - IPv4')
                         ->maxlength( 20 )
                         ->blockHelp( "A shorter version of the name to be used in (for example) dropdowns or other space constrained areas 
@@ -112,19 +112,19 @@
                     ?>
 
                     <?= Former::text( 'router_id' )
-                        ->label( 'Router ID' )
+                        ->label( 'Router ID*' )
                         ->placeholder('192.0.2.8')
                         ->blockHelp( "The router's BGP ID (e.g. <code>192.0.2.8</code>). Must validate as an IPv4 address." );
                     ?>
 
                     <?= Former::text( 'peering_ip' )
-                        ->label( 'Peering IP' )
+                        ->label( 'Peering IP *' )
                         ->placeholder( '192.0.2.8 / 2001:db8::8' )
                         ->blockHelp( 'The IPv4/6 address that this router initiates BGP peering sessions from.' );
                     ?>
 
                     <?= Former::text( 'asn' )
-                        ->label( 'ASN' )
+                        ->label( 'ASN*' )
                         ->placeholder( '65501' )
                         ->blockHelp( "The router's AS number.<br><br>"
                             . "If you are adding a route server, you are strongly advised to use a 16-bit ASN as otherwise "
@@ -133,7 +133,7 @@
                     ?>
 
                     <?= Former::select( 'software' )
-                        ->label( 'Software' )
+                        ->label( 'Routing Software*' )
                         ->fromQuery( \IXP\Models\Router::$SOFTWARES )
                         ->placeholder( 'Choose the platform / software' )
                         ->addClass( 'chzn-select' )
@@ -141,7 +141,7 @@
                     ?>
 
                     <?= Former::text( 'software_version' )
-                        ->label( 'Software Version' )
+                        ->label( 'Routing Software Version' )
                         ->placeholder( '2.0.4')
                         ->blockHelp( "The version of the BGP software daemon (free text, used in IX-F export" );
                     ?>
@@ -159,14 +159,14 @@
                     ?>
 
                     <?= Former::text( 'mgmt_host' )
-                        ->label( 'Management Host' )
+                        ->label( 'Management Host *' )
                         ->placeholder( '192.0.2.89 / 2001:db8::89 / rs1-lan1-ipv4.mgmt.example.com')
                         ->blockHelp( "The hostname or IP address for accessing the management interface of the host. This will be used
                     for creating Nagios configurations, etc." );
                     ?>
 
                     <?= Former::select( 'api_type' )
-                        ->label( 'API Type' )
+                        ->label( 'API Type*' )
                         ->fromQuery( \IXP\Models\Router::$API_TYPES )
                         ->placeholder( 'Choose an API type' )
                         ->addClass( 'chzn-select' )

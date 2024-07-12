@@ -7,6 +7,15 @@
     <div class="row">
         <div class="col-12">
             <div class="tw-w-full tw-max-w-sm tw-mx-auto">
+                {{-- <x-partials.flash-message /> --}}
+{{-- 
+                @foreach(session('ixp.utils.view.alerts') as $alertz => $v)
+                {{ $v }}
+                @endforeach --}}
+                @php
+                    $alert = IXP\Utils\View\Alert\Container::html();
+                    echo $alert
+                @endphp
 
                 <form method="POST" action="{{ route('login@login') }}"
                     class="tw-bg-white tw-shadow-md tw-rounded-xl tw-px-8 tw-pt-6 tw-pb-8 tw-mb-6">
@@ -45,13 +54,13 @@
                     </div>
 
                     @if( config('auth.peeringdb.enabled') )
-                    <hr class="tw-my-4">
-                    <p class="tw-text-center tw-text-lg tw-italic tw-text-grey-dark">or login with</p>
-                    <p class="tw-text-center">
-                        <a href="{{ route('auth:login-peeringdb') }}">
-                            <img class="tw-inline" width="60%" src="{{ asset('images/pdb-logo-coloured.png') }}">
-                        </a>
-                    </p>
+                        <hr class="tw-my-4">
+                        <p class="tw-text-center tw-text-lg tw-italic tw-text-grey-dark">or login with</p>
+                        <p class="tw-text-center">
+                            <a href="{{ route('auth:login-peeringdb') }}">
+                                <img class="tw-inline" width="60%" src="{{ asset('images/pdb-logo-coloured.png') }}">
+                            </a>
+                        </p>
                     @endif
                 </form>
             </div>

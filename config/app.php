@@ -1,7 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Facade;
+
 /*
- * Copyright (C) 2009 - 2021 Internet Neutral Exchange Association Company Limited By Guarantee.
+ * Copyright (C) 2009 - 2024 Internet Neutral Exchange Association Company Limited By Guarantee.
  * All Rights Reserved.
  *
  * This file is part of IXP Manager.
@@ -250,46 +252,7 @@ return [
     |
     */
 
-    'aliases' => [
-
-        'App'       => 'Illuminate\Support\Facades\App',
-        'Arr'       => Illuminate\Support\Arr::class,
-        'Artisan'   => 'Illuminate\Support\Facades\Artisan',
-        'Auth'      => 'Illuminate\Support\Facades\Auth',
-        'Blade'     => 'Illuminate\Support\Facades\Blade',
-        'Broadcast' => Illuminate\Support\Facades\Broadcast::class,
-        'Bus'       => 'Illuminate\Support\Facades\Bus',
-        'Cache'     => 'Illuminate\Support\Facades\Cache',
-        'Config'    => 'Illuminate\Support\Facades\Config',
-        'Cookie'    => 'Illuminate\Support\Facades\Cookie',
-        'Crypt'     => 'Illuminate\Support\Facades\Crypt',
-        'DB'        => 'Illuminate\Support\Facades\DB',
-        'Eloquent'  => 'Illuminate\Database\Eloquent\Model',
-        'Event'     => 'Illuminate\Support\Facades\Event',
-        'File'      => 'Illuminate\Support\Facades\File',
-        'Gate'      => Illuminate\Support\Facades\Gate::class,
-        'Hash'      => 'Illuminate\Support\Facades\Hash',
-        'Http'      => Illuminate\Support\Facades\Http::class,
-        'Input'     => 'Illuminate\Support\Facades\Input',
-        'Lang'      => 'Illuminate\Support\Facades\Lang',
-        'Log'       => 'Illuminate\Support\Facades\Log',
-        'Mail'      => 'Illuminate\Support\Facades\Mail',
-        'Notification' => Illuminate\Support\Facades\Notification::class,
-        'Password'  => 'Illuminate\Support\Facades\Password',
-        'Queue'     => 'Illuminate\Support\Facades\Queue',
-        'Redirect'  => 'Illuminate\Support\Facades\Redirect',
-        //'Redis'     => 'Illuminate\Support\Facades\Redis',
-        'Request'   => 'Illuminate\Support\Facades\Request',
-        'Response'  => 'Illuminate\Support\Facades\Response',
-        'Route'     => 'Illuminate\Support\Facades\Route',
-        'Schema'    => 'Illuminate\Support\Facades\Schema',
-        'Session'   => 'Illuminate\Support\Facades\Session',
-        'Storage'   => 'Illuminate\Support\Facades\Storage',
-        'Str'       => Illuminate\Support\Str::class,
-        'URL'       => 'Illuminate\Support\Facades\URL',
-        'Validator' => 'Illuminate\Support\Facades\Validator',
-        'View'      => 'Illuminate\Support\Facades\View',
-
+    'aliases' => Facade::defaultAliases()->merge([
         'Grapher'   => IXP\Support\Facades\Grapher::class,
         'Image'     => Intervention\Image\Facades\Image::class,
 
@@ -299,6 +262,8 @@ return [
         'Countries' => Webpatser\Countries\CountriesFacade::class,
 
         'Google2FA' => PragmaRX\Google2FALaravel\Facade::class,
-    ],
+        // 'ExampleClass' => App\Example\ExampleClass::class,
+        
+    ])->toArray(),
 
 ];
