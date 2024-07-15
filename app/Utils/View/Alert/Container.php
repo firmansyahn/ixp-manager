@@ -113,9 +113,9 @@ class Container
                     break;
             }
 
-            $alerts .= '<div class="' . $color . ' tw-border-l-4 ' . $border . ' ' . $text . ' p-4 alert-dismissible mb-4" role="alert">' . "\n"
-                . '<div class="d-flex align-items-center">'
-                . '<div class="text-center"><i class="fa ' . $icon . ' fa-2x "></i></div>'
+            $alerts .= '<div class="' . $color . ' tw-border-l-4 ' . $border . ' ' . $text . ' p-2 alert-dismissible mb-4" role="alert">' . "\n"
+                . '<div class="tw-flex tw-text-sm align-items-center">'
+                . '<div class="text-center"><i class="fa ' . $icon . ' fa"></i></div>'
                 . '<div class="col-sm-12">' . $alert->message() . "</div> \n"
                 . '</div></div>' . "\n\n";
         }

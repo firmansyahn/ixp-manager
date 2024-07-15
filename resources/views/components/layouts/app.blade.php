@@ -25,25 +25,25 @@
         @section('headers')
     </head>
 
-    <body class="d-flex flex-column h-100 font-weight-normal">
+    <body class="d-flex flex-column h-100 tw-font-normal tw-bg-gray-50">
         <header>
             @php
-            use IXP\Models\User;
-            
-            /*
-             * We used to manage these menus with a lot of if / elseif / else clauses. It was a mess.
-             * Despite the drawbacks of replication, it's easier - by a distance - to mainatin standalone
-             * menu templates per user type:
-             */
-            $authCheck  = Auth::check();
-            if( $authCheck ){
-                $is2faAuthRequiredForSession = Auth::getUser()->is2faAuthRequiredForSession();
-                $privs      = Auth::getUser()->privs();
-            }
+                use IXP\Models\User;
+                
+                /*
+                * We used to manage these menus with a lot of if / elseif / else clauses. It was a mess.
+                * Despite the drawbacks of replication, it's easier - by a distance - to mainatin standalone
+                * menu templates per user type:
+                */
+                $authCheck  = Auth::check();
+                if( $authCheck ){
+                    $is2faAuthRequiredForSession = Auth::getUser()->is2faAuthRequiredForSession();
+                    $privs      = Auth::getUser()->privs();
+                }
             @endphp
 
             @if( !$authCheck || Session::exists( "2fa-" . Auth::id() ) )
-                @include("layouts.menus.public");
+                <x-navbar.topnav-public />
             @elseif( $privs === User::AUTH_CUSTUSER && Auth::getUser()->customer->typeAssociate() )
                 @include("layouts/menus/associate");
             @elseif( $privs === User::AUTH_CUSTADMIN )
@@ -59,7 +59,8 @@
             <div class="row" >
 
                 @if( $authCheck && $privs === User::AUTH_SUPERUSER && !$is2faAuthRequiredForSession )
-                    @include('layouts.menu')
+                    {{-- @include('layouts.menu') --}}
+                    <x-navbar.sidebar />
                 @endif
 
                 <div id="slide-reveal-overlay" class="collapse"></div>
@@ -71,9 +72,11 @@
                       <div class="flex-wrap pt-3 pb-2 mb-3 d-flex justify-content-between flex-md-nowrap align-items-center border-bottom">
                           <h3>
                               @section('page-header-preamble')
+                              @show
                           </h3>
                           <div class="mb-2 ml-auto btn-toolbar mb-md-0">
                               @section('page-header-postamble')
+                              @show
                           </div>
                       </div>
 
@@ -87,7 +90,7 @@
             </div> <!-- </div class="row"> -->
         </div> <!-- </div class="container"> -->
 
-        @include('layouts.base.footer-content')
+        <x-layouts.footer-content />
 
         <script>
             const WHOIS_ASN_URL             = "{{ url("api/v4/aut-num") }}";
@@ -159,7 +162,7 @@
 
         @section('scripts')
 
-        @include('layouts.base.footer-custom')
+        <x-layouts.footer-custom />
 
         {{-- @vite(['resources/js/main.js']) --}}
     </body>

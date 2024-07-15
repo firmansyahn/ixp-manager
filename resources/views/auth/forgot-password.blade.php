@@ -8,6 +8,8 @@
         <div class="col-12">
             <div class="tw-w-full tw-max-w-sm tw-mx-auto">
 
+                <x-partials.flash-bootstrap />
+
                 <form method="POST" action="{{ route('forgot-password@reset-email') }}"
                     class="tw-bg-white tw-shadow-md tw-rounded-sm tw-px-8 tw-pt-6 tw-pb-8 tw-mb-6">
 

@@ -25,7 +25,7 @@
         <?php $this->stop() ?>
     </head>
 
-    <body class="d-flex flex-column h-100 tw-font-figtree">
+    <body class="tw-flex tw-flex-col tw-h-full tw-bg-gray-50 tw-font-figtree">
         <header>
             <?php
             use IXP\Models\User;
@@ -65,7 +65,7 @@
                  <?php else: ?>
                     <main role="main" id="main-div" class="pb-4 mt-2 col-md-10 mx-sm-auto">
                 <?php endif; ?>
-                      <div class="flex-wrap pt-3 pb-2 mb-3 d-flex justify-content-between flex-md-nowrap align-items-center border-bottom">
+                      <div class="flex-wrap pt-3 pb-2 mb-3 d-flex justify-content-between flex-md-nowrap align-items-center">
                           <h3>
                               <?php $this->section( 'page-header-preamble' ) ?>
                               <?php $this->stop() ?>

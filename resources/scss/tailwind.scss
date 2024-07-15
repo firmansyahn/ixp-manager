@@ -12,8 +12,9 @@
 @tailwind base;
 
 @layer base {
-  // @import url('public/fonts/figtree/latin.css');
-  // @import "./node_modules/@fontsource/figtree/latin.css";
+  html {
+    font-family: "Figtree", system-ui, sans-serif;
+  }
 
   /* figtree-latin-300-normal */
   @font-face {

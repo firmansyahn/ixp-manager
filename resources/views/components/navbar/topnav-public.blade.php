@@ -152,10 +152,11 @@
                         Logout
                     </a>
                 @else
-                    <a class="nav-link" {{ request()->is('login') ? 'style=visibility:hidden' : '' }}
-                        href="{{ route('login@showForm') }}">
+                    <x-button.outline href="{{ route('login@showForm') }}" 
+                        class="{{ request()->is('login') ? 'tw-hidden' : '' }}"
+                    >
                         Sign in
-                    </a>
+                    </x-button.outline>
                 @endif
             </li>
         </ul>
