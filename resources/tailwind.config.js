@@ -56,7 +56,7 @@ module.exports = {
 
   safelist: [
     {
-      pattern: /(border|flex|rounded)$/,
+      pattern: /(border|flex|rounded)/,
     },
     {
       pattern: /(bg|border|font|flex|text|h)-./,
@@ -551,6 +551,7 @@ module.exports = {
       borderWidth: {
         default: '1px',
         '0': '0',
+        '1': '1px',
         '2': '2px',
         '4': '4px',
         '8': '8px',

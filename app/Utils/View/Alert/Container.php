@@ -90,13 +90,13 @@ class Container
                 case 'danger':
                     $icon = "fa-exclamation-triangle";
                     $color = "tw-bg-red-100";
-                    $border = "tw-border-red-500";
-                    $text = "tw-text-red-700";
+                    $border = "tw-border-red-300";
+                    $text = "tw-text-red-500";
                     break;
                 case 'info':
                     $icon = "fa-info-circle";
                     $color = "tw-bg-blue-100";
-                    $border = "tw-border-blue-500";
+                    $border = "tw-border-blue-300";
                     $text = "tw-text-blue-700";
                     break;
                 case 'success':
@@ -113,9 +113,8 @@ class Container
                     break;
             }
 
-            $alerts .= '<div class="' . $color . ' tw-border-l-4 ' . $border . ' ' . $text . ' p-2 alert-dismissible mb-4" role="alert">' . "\n"
+            $alerts .= '<div class="' . $color . ' ' . $border . ' ' . $text . ' p-2 alert-dismissible mb-4 tw-rounded-md tw-border-1" role="alert">' . "\n"
                 . '<div class="tw-flex tw-text-sm align-items-center">'
-                . '<div class="text-center"><i class="fa ' . $icon . ' fa"></i></div>'
                 . '<div class="col-sm-12">' . $alert->message() . "</div> \n"
                 . '</div></div>' . "\n\n";
         }
