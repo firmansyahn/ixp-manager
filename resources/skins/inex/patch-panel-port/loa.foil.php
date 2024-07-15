@@ -11,7 +11,7 @@
     <body>
         <table width="100%" border="0">
             <tr>
-                <td style="text-align: left; vertical-align: top; width="50%">
+                <td style="text-align: left; vertical-align: top; width: 50%;">
                     <img alt="[INEX Logo]" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAA6CAIAAAAcHyqlAAAAAXNSR0IArs4c6QAA
         AAlwSFlzAAALEwAACxMBAJqcGAAAA6dpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAA
         ADx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhN
@@ -234,7 +234,7 @@
         A/tC8KVsAwwX5YNFUtY5hucNk83eY0z9TPUY1WGMyNcWOZaGgCE64f8B3+eWneiQ
         pEgAAAAASUVORK5CYII=" />
                 </td>
-                <td style="text-align: right; width="50%">
+                <td style="text-align: right; width: 50%">
                     Internet&nbsp;Neutral&nbsp;Exchange&nbsp;Association<br>
                     Company Limited by Guarantee,<br>
                     4027 Kingswood Road,<br>

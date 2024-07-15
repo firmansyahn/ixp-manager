@@ -72,7 +72,8 @@ Route::group( [ 'prefix' => 'rs-prefixes', 'middleware' => [ 'rs-prefixes' ] ], 
     Route::get(     'view/{cust}',   'RsPrefixesController@view' )->name( 'rs-prefixes@view'  );
 });
 
-Route::get('filtered-prefixes/{cust}', 'FilteredPrefixesController@list' )->name( 'filtered-prefixes@list' );
+Route::get('filtered-prefixes/{cust}', [IXP\Http\Controllers\FilteredPrefixesController::class, 'list'])
+    ->name( 'filtered-prefixes@list' );
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -110,11 +111,12 @@ Route::group( [ 'namespace' => 'Auth' ], function() {
 ///
 /// Dashboard
 ///
-Route::group( [ 'prefix' => 'dashboard' ], function() {
-    Route::get(  '{tab?}',                          'DashboardController@index'                 )->name( "dashboard@index"                  );
-    Route::post(  'store-noc-details',              'DashboardController@storeNocDetails'       )->name( "dashboard@store-noc-details"      );
-    Route::post(  'store-billing-details',          'DashboardController@storeBillingDetails'   )->name( "dashboard@store-billing-details"  );
-
+Route::controller(\IXP\Http\Controllers\DashboardController::class)
+    ->prefix('dashboard')
+    ->group(function() {
+        Route::get(  '{tab?}',                'index'               )->name( "dashboard@index"                  );
+        Route::post( 'store-billing-details', 'storeBillingDetails' )->name( "dashboard@store-billing-details"  );
+        Route::post( 'store-noc-details',     'storeNocDetails'     )->name( "dashboard@store-noc-details"      );
 });
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -152,12 +154,14 @@ Route::group( [ 'namespace' => 'User', 'prefix' => 'user' ], function() {
 ///
 /// Peering manager
 ///
-Route::group( [ 'prefix' => 'peering-manager' ], function() {
-    Route::get(  '',                            'PeeringManagerController@index'            )->name( 'peering-manager@index'                );
-    Route::get(  '{id}/mark-peering/{status}',  'PeeringManagerController@markPeering'      )->name( 'peering-manager@mark-peering'         );
-    Route::post( 'form',                        'PeeringManagerController@formEmailFrag'    )->name( 'peering-manager@form-email-frag'      );
-    Route::post( 'send-peering-email',          'PeeringManagerController@sendPeeringEmail' )->name( 'peering-manager@send-peering-email'   );
-    Route::post( 'notes',                       'PeeringManagerController@peeringNotes'     )->name( 'peering-manager@notes'                );
+Route::controller(\IXP\Http\Controllers\PeeringManagerController::class)
+    ->prefix('peering-manager')
+    ->group(function() {
+        Route::get(  '',                            'index'            )->name( 'peering-manager@index'                );
+        Route::get(  '{id}/mark-peering/{status}',  'markPeering'      )->name( 'peering-manager@mark-peering'         );
+        Route::post( 'form',                        'formEmailFrag'    )->name( 'peering-manager@form-email-frag'      );
+        Route::post( 'send-peering-email',          'sendPeeringEmail' )->name( 'peering-manager@send-peering-email'   );
+        Route::post( 'notes',                       'peeringNotes'     )->name( 'peering-manager@notes'                );
 });
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -165,9 +169,11 @@ Route::group( [ 'prefix' => 'peering-manager' ], function() {
 ///
 /// IRRDB
 ///
-Route::group( [ 'prefix' => 'irrdb' ], function() {
-    Route::get(  'customer/{cust}/{type}/{protocol}',   'IrrdbController@list'            )->name( 'irrdb@list'            );
-    Route::get(  'update/{cust}/{type}/{protocol}',     'IrrdbController@update'          )->name( 'irrdb@update'          );
+Route::controller(\IXP\Http\Controllers\IrrdbController::class)
+    ->prefix('irrdb')
+    ->group(function() {
+        Route::get( 'customer/{cust}/{type}/{protocol}', 'list'   )->name( 'irrdb@list'   );
+        Route::get( 'update/{cust}/{type}/{protocol}',   'update' )->name( 'irrdb@update' );
 });
 
 /////////////////////////////////////////////////////////////////////////////////////////////////

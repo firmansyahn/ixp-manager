@@ -37,7 +37,7 @@ use Illuminate\Support\Facades\Route;
 ///
 if( config( 'google2fa.enabled' ) ) {
     Route::group( [ 'namespace' => 'User', 'prefix' => '2fa' ], function() {
-        Route::post('delete/{user}',  'User2FAController@delete'     )->name( "2fa@delete" );
+        Route::post('delete/{user}', [\IXP\Http\Controllers\User\User2FAController::class, 'delete'])->name( "2fa@delete" );
     });
 }
 
@@ -264,14 +264,14 @@ Route::group( [ 'namespace' => 'User' ], function() {
 ///
 /// Admin
 ///
-Route::get('admin', [\IXP\Http\Controllers\AdminController::class , 'dashboard'])->name( 'admin@dashboard' );
+Route::get('admin', [\IXP\Http\Controllers\AdminController::class , 'dashboard'])->name('admin@dashboard');
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
 ///
 /// Search
 ///
-Route::get('search', [\IXP\Http\Controllers\SearchController::class , 'do'])->name( 'search' );
+Route::get('search', [\IXP\Http\Controllers\SearchController::class , 'do'])->name('search');
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -318,12 +318,8 @@ if( !config( 'ixp_fe.frontend.disabled.logs' ) ){
 ///
 /// Route Server Filters
 ///
-
-Route::get( 'rs-filters/list-customers', 'RsFilterController@listCustomers' )->name( 'rs-filters@list-customers' );
-
-
-
-
+Route::get('rs-filters/list-customers', [IXP\Http\Controllers\RsFilterController::class, 'listCustomers'])
+    ->name('rs-filters@list-customers');
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////

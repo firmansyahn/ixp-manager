@@ -50,6 +50,9 @@ Route::group( [  'prefix' => 'member-export' ], function() {
     Route::get('ixf/{version}',  'MemberExportController@ixf' );
 });
 
+
+Route::get('member/list', [\IXP\Http\Controllers\Api\V4\CustomerController::class, 'list'])->name('member.list');
+
 // https://www.ixpmanager.org/js/ixp-manager-users.json
 Route::get( 'ixpmanager-users/ixf-ids', function() {
     return response()->json( Cache::remember('ixpmanager-users/ixf-ids', 120, function() {

@@ -22,7 +22,7 @@
                 <thead>
                     <tr>
                         <th>
-                            {{ ucfirst( config( 'ixp_fe.lang.customer.one' ) ) }}
+                            {{ ucfirst( config('ixp_fe.lang.customer.one') ) }}
                         </th>
                         <th class="tw-hidden md:tw-table-cell">
                             Joined
