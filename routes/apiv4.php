@@ -45,13 +45,13 @@ Route::any( 'test', 'PublicController@test' )->name('api-v4:test' );
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // IX-F Member List Export
-Route::group( [  'prefix' => 'member-export' ], function() {
-    Route::get('ixf',            'MemberExportController@ixf' )->name('ixf-member-export');
-    Route::get('ixf/{version}',  'MemberExportController@ixf' );
+Route::controller(IXP\Http\Controllers\Api\V4\MemberExportController::class)
+    ->prefix('member-export')
+    ->group(function() {
+        Route::get('ixf',           'ixf')->name('ixf-member-export');
+        Route::get('ixf/{version}', 'ixf');
 });
 
-
-Route::get('member/list', [\IXP\Http\Controllers\Api\V4\CustomerController::class, 'list'])->name('member.list');
 
 // https://www.ixpmanager.org/js/ixp-manager-users.json
 Route::get( 'ixpmanager-users/ixf-ids', function() {

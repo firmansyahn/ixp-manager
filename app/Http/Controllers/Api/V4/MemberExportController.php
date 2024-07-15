@@ -66,7 +66,8 @@ class MemberExportController extends Controller
 
         $exporter = new JsonSchemaExporter;
 
-        return response()->json( $exporter->get( $version, true, Auth::check(), $withTags ), 200, [], JSON_PRETTY_PRINT )
+        return response()
+            ->json( $exporter->get( $version, true, Auth::check(), $withTags ), 200, [], JSON_PRETTY_PRINT )
             ->header( "Access-Control-Allow-Origin", "*" );
     }
 }

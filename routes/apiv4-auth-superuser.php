@@ -39,13 +39,19 @@ use Illuminate\Support\Facades\Route;
 //     curl -X GET -H "X-IXP-Manager-API-Key: mySuperSecretApiKey" http://ixpv.dev/api/v4/test
 //     wget http://ixpv.dev/api/v4/test?apikey=mySuperSecretApiKey
 
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Customers
 //
-Route::group( [  'prefix' => 'customer' ], function() {
-    Route::get(  'query-peeringdb/asn/{asn}',   'CustomerController@queryPeeringDbWithAsn'  );
-    Route::post( '{cust}/switches',             'CustomerController@switches'               );
+Route::controller(IXP\Http\Controllers\Api\V4\CustomerController::class)
+    ->prefix('customer')
+    ->group(function() {
+    Route::get(  'query-peeringdb/asn/{asn}', 'queryPeeringDbWithAsn' );
+    Route::post( '{cust}/switches',           'switches'              );
+    Route::get(  'list',                      'list'                  )->name('customer.list');
 });
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Patch Panel Port

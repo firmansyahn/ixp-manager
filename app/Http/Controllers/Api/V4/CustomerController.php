@@ -3,7 +3,7 @@
 namespace IXP\Http\Controllers\Api\V4;
 
 /*
- * Copyright (C) 2009 - 2021 Internet Neutral Exchange Association Company Limited By Guarantee.
+ * Copyright (C) 2009 - 2024 Internet Neutral Exchange Association Company Limited By Guarantee.
  * All Rights Reserved.
  *
  * This file is part of IXP Manager.
@@ -44,22 +44,23 @@ use IXP\Services\PeeringDb;
  *
  * @author     Barry O'Donovan <barry@islandbridgenetworks.ie>
  * @author     Yann Robin <yann@islandbridgenetworks.ie>
+ * @author     Firmansyah Nainggolan <firmansyah@nainggolan.id>
  * @category   APIv4
  * @package    IXP\Http\Controllers\Api\V4
- * @copyright  Copyright (C) 2009 - 2021 Internet Neutral Exchange Association Company Limited By Guarantee
+ * @copyright  Copyright (C) 2009 - 2024 Internet Neutral Exchange Association Company Limited By Guarantee
  * @license    http://www.gnu.org/licenses/gpl-2.0.html GNU GPL V2.0
  */
 class CustomerController extends Controller
 {
 
     /**
-     * Display a listing of the resource with limited return value.
+     * Get member list
      *
      * @return \IXP\Http\Controllers\Api\V4\Customer\Resources\ListCustomerResource
      */
     public function list()
     {
-        $this->authorize(auth()->guard('api')->check());
+        // $this->authorize(auth()->check());
 
         $customers = Customer::with(['logo' => function ($query) {
                 $query->select('customer_id', 'stored_name');
