@@ -132,7 +132,7 @@ class CustomerController extends Controller
             $tid = false;
         }
 
-        return view( 'customer/list' )->with([
+        return view( 'customer.list' )->with([
             'state'                 => $state           ?? false,
             'type'                  => $type            ?? false,
             'showCurrentOnly'       => $showCurrentOnly ?? false,

@@ -31,7 +31,6 @@ use IXP\Models\{
     PatchPanel,
     Vlan
 };
-use IXP\Http\Controllers\Api\V4\Resources\ListCustomerResource;
 
 use Illuminate\Http\{
     JsonResponse,
@@ -52,23 +51,6 @@ use IXP\Services\PeeringDb;
  */
 class CustomerController extends Controller
 {
-
-    /**
-     * Get member list
-     *
-     * @return \IXP\Http\Controllers\Api\V4\Customer\Resources\ListCustomerResource
-     */
-    public function list()
-    {
-        // $this->authorize(auth()->check());
-
-        $customers = Customer::with(['logo' => function ($query) {
-                $query->select('customer_id', 'stored_name');
-            }])->get();
-
-        return ListCustomerResource::collection($customers);
-        // return response()->json($customers);
-    }
 
     /**
      * Get the switches for a customer

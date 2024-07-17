@@ -459,6 +459,7 @@ class SwitchController extends EloquentController
 
         $this->object->update( $r->all() );
         $this->extraAttributes( $r );
+
         return true;
     }
 
@@ -472,7 +473,12 @@ class SwitchController extends EloquentController
         // wipe any preexisting cached switch platform entry:
         session()->remove( "snmp-platform" );
         $this->addEditSetup();
-        return $this->display( 'add-by-smtp-form' );
+
+        return $this->display('add-by-smtp-form');
+        // return view('switches.add-by-smtp-form')->with([
+        //     'data'          => $this->data,
+        //     'feParams'      => $this->feParams
+        // ]);
     }
 
     /**

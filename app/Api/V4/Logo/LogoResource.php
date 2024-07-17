@@ -1,6 +1,6 @@
 <?php
 
-namespace IXP\Http\Controllers\Api\V4\Resources;
+namespace IXP\Api\V4\Logo;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 

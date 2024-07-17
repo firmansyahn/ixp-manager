@@ -390,6 +390,16 @@ class Customer extends Model
     }
 
     /**
+     * Get the physical interfaces for the customer
+     */
+    public function physicalInterfaces(): HasManyThrough
+    {
+        return $this->hasManyThrough( PhysicalInterface::class, VirtualInterface::class,
+            'custid', 'virtualinterfaceid'
+        );
+    }
+
+    /**
      * Get the docstore customer directories for the customer
      */
     public function docstoreCustomerDirectories(): HasMany

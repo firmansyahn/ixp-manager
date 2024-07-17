@@ -43,14 +43,22 @@ use Illuminate\Support\Facades\Route;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Customers
 //
+Route::get('members', [IXP\Api\V4\Member\MemberController::class, 'index'])->name('members');
+Route::prefix('member')
+    ->name('member.')
+    ->group(function() {
+        Route::get('{customer}',       [IXP\Api\V4\Member\MemberController::class , 'show'])->name('show');
+        Route::get('{customer}/ports', [IXP\Api\V4\Member\MemberController::class , 'ports'])->name('ports');
+        Route::get('{customer}/vifs',  [IXP\Api\V4\Member\MemberController::class , 'vifs'])->name('vifs');
+});
+
 Route::controller(IXP\Http\Controllers\Api\V4\CustomerController::class)
     ->prefix('customer')
     ->group(function() {
-    Route::get(  'query-peeringdb/asn/{asn}', 'queryPeeringDbWithAsn' );
-    Route::post( '{cust}/switches',           'switches'              );
-    Route::get(  'list',                      'list'                  )->name('customer.list');
+        Route::get(  'query-peeringdb/asn/{asn}', 'queryPeeringDbWithAsn' );
+        Route::post( '{cust}/switches',           'switches'              );
+        Route::get(  'list',                      'list'                  )->name('customer.list');
 });
-
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -116,20 +124,29 @@ Route::group( [  'prefix' => 'provisioner', 'namespace' => 'Provisioner' ], func
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Switch Port
 //
-Route::group( [  'prefix' => 'switch-port' ], function() {
-    Route::get('{sp}/customer',                         'SwitchPortController@customer' );
-    Route::get('{sp}/physical-interface',               'SwitchPortController@physicalInterface' );
+Route::controller(IXP\Http\Controllers\Api\V4\SwitchPortController::class)
+    ->name('switch-port.')
+    ->prefix('switch-port')
+    ->group(function() {
+        Route::get('{switchport}',                      'show')->name('show');
+        Route::get('{switchport}/customer',             'customer' )->name('customer');
+        Route::get('{switchport}/device',               'device')->name('device');
+        Route::get('{switchport}/member',               'member')->name('member');
+        Route::get('{switchport}/physical-interface',   'physicalInterface' )->name('physical-interface');
+        Route::get('{switchport}/port',                 'port')->name('port');
 });
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Switch
 //
-Route::group( [  'prefix' => 'switch' ], function() {
-    Route::get( '{s}/ports',                        'SwitchController@ports'                );
-    Route::get( '{s}/status',                       'SwitchController@status'               );
-    Route::get( '{s}/core-bundles-status',          'SwitchController@coreBundlesStatus'    );
-    Route::post('{s}/switch-port-for-ppp',          'SwitchController@switchPortForPPP'     )->name( 'switch@switch-port-for-ppp' );
-    Route::post('{s}/switch-port-prewired',         'SwitchController@switchPortPrewired'   )->name( 'switch@switch-port-prewired' );
+Route::controller(IXP\Http\Controllers\Api\V4\SwitchController::class)
+    ->prefix('switch')
+    ->group(function() {
+        Route::get( '{s}/ports',                        'ports'                );
+        Route::get( '{s}/status',                       'status'               );
+        Route::get( '{s}/core-bundles-status',          'coreBundlesStatus'    );
+        Route::post('{s}/switch-port-for-ppp',          'switchPortForPPP'     )->name( 'switch@switch-port-for-ppp' );
+        Route::post('{s}/switch-port-prewired',         'switchPortPrewired'   )->name( 'switch@switch-port-prewired' );
 });
 
 

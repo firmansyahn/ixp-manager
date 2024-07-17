@@ -23,9 +23,14 @@ namespace IXP\Http\Controllers\Api\V4;
  * http://www.gnu.org/licenses/gpl-2.0.html
  */
 
-use Illuminate\Http\JsonResponse;
-
 use IXP\Models\SwitchPort;
+
+use Illuminate\Http\JsonResponse;
+use IXP\Api\V4\Member\MemberResource;
+use IXP\Api\V4\PhysicalInterface\PhysicalInterfaceResource;
+use IXP\Api\V4\Switch\SwitchPortResource;
+use IXP\Api\V4\Switch\SwitchResource;
+use IXP\Api\V4\VirtualInterface\VirtualInterfaceResource;
 
 /**
  * SwitchPort Controller
@@ -46,7 +51,7 @@ class SwitchPortController extends Controller
      *
      * @return  JsonResponse JSON customer object
      */
-    public function customer( SwitchPort $sp ): JsonResponse
+    public function customer(SwitchPort $switchport): JsonResponse
     {
         return response()->json( [
             'customer' =>  SwitchPort::selectRaw( 'COUNT( c.id ) as nb, c.id, c.name' )
@@ -54,7 +59,7 @@ class SwitchPortController extends Controller
                 ->leftJoin( 'physicalinterface AS pi', 'pi.switchportid', 'sp.id' )
                 ->leftJoin( 'virtualinterface AS vi', 'vi.id', 'pi.virtualinterfaceid' )
                 ->leftJoin( 'cust AS c', 'c.id', 'vi.custid' )
-                ->where( 'sp.id', $sp->id )
+                ->where( 'sp.id', $switchport->id )
                 ->groupBy( 'c.id' )
                 ->first()->toArray()
         ] );
@@ -63,13 +68,12 @@ class SwitchPortController extends Controller
     /**
      * Check if the switch port has a physical interface set
      *
-     * @param   SwitchPort $sp  Id of the switchport
-     *
+     * @param   SwitchPort $switchport  Id of the switchport
      * @return  JsonResponse JSON response
      */
-    public function physicalInterface( SwitchPort $sp ): JsonResponse
+    public function physicalInterface(SwitchPort $switchport): JsonResponse
     {
-        if( ( $pi = $sp->physicalInterface ) ){
+        if( ( $pi = $switchport->physicalInterface ) ){
             return response()->json([
                 'pi' => [
                     'id'         => $pi->id,
@@ -79,5 +83,57 @@ class SwitchPortController extends Controller
             ]);
         }
         return response()->json( [] );
+    }
+
+    /**
+     * Display a listing of the switch port Device resource.
+     *
+     * @param  \IXP\Models\SwitchPort       $switchport
+     * @return \Illuminate\Http\Response
+     */
+    public function device(SwitchPort $switchport)
+    {
+        $device = $switchport->switcher;
+
+        return SwitchResource::make($device);
+    }
+
+    /**
+     * Display a listing of the switch port Member resource.
+     *
+     * @param  \IXP\Models\SwitchPort       $switchport
+     * @return \Illuminate\Http\Response
+     */
+    public function member(SwitchPort $switchport)
+    {
+        $member = $switchport->physicalInterface->virtualInterface->customer;
+
+        return MemberResource::make($member);
+    }
+
+    /**
+     * Display a listing of the switch port Physical Interface resource.
+     *
+     * @param  \IXP\Models\SwitchPort       $switchport
+     * @return \Illuminate\Http\Response
+     */
+    public function port(SwitchPort $switchport)
+    {
+        $port = $switchport->physicalInterface;
+
+        return PhysicalInterfaceResource::make($port);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \IXP\Models\SwitchPort       $switchport
+     * @return \Illuminate\Http\Response
+     */
+    public function show(SwitchPort $switchport)
+    {
+        $switchport->load(['switcher', 'physicalInterface', 'patchPanelPort']);
+
+        return SwitchPortResource::make($switchport);
     }
 }

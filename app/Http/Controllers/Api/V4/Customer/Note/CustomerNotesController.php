@@ -159,6 +159,7 @@ class CustomerNotesController extends Controller
         $on = clone( $cn );
         $cn->delete();
         event( new CustomerNoteDeletedEvent ( null , $on, Auth::getUser() ) );
+
         return response()->json( [ 'noteid' => $on->id ] );
     }
 

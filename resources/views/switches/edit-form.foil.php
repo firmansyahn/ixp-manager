@@ -12,14 +12,14 @@
         <div class="row">
             <div class="col-lg-6">
                 <?= Former::text( 'name' )
-                    ->label( 'Name' )
+                    ->label( 'Name*' )
                     ->placeholder( 'switch01' )
                     ->blockHelp( "How you would like the switch referenced in various pages of IXP Manager. This should be a single word "
                         . "such as the host part of a fully qualified name. It should be all lowercase and only contain the characters a-z, 0-9, - and _" );
                 ?>
 
                 <?= Former::text( 'hostname' )
-                    ->label( 'Hostname' )
+                    ->label( 'Hostname*' )
                     ->placeholder( 'switch01.mgmt.example.com' )
                     ->disabled( $t->data[ 'params'][ 'addBySnmp'] ? true : false )
                     ->blockHelp( "Ideally this should be the fully qualified hostname of your switch.<br><br>"
@@ -33,7 +33,7 @@
 
                 <div class="form-group row">
                     <label for="cabinetid" class="control-label col-lg-4 col-sm-4">
-                        Rack
+                        Rack*
                     </label>
                     <div class="col-lg-8 col-sm-6">
                         <?php
@@ -59,9 +59,8 @@
                     </div>
                 </div>
 
-
                 <?= Former::select( 'infrastructure' )
-                    ->label( 'Infrastructure' )
+                    ->label( 'Infrastructure*' )
                     ->fromQuery( $t->data[ 'params'][ 'infra'], 'name' )
                     ->placeholder( 'Choose the infrastructure' )
                     ->addClass( 'chzn-select' )
@@ -82,7 +81,7 @@
                 <?php endif; ?>
 
                 <?= Former::select( 'vendorid' )
-                    ->label( 'Vendor' )
+                    ->label( 'Vendor*' )
                     ->fromQuery( $t->data[ 'params'][ 'vendors'], 'name' )
                     ->placeholder( 'Choose a vendor' )
                     ->addClass( 'chzn-select' )
@@ -121,7 +120,7 @@
             </div>
         </div>
 
-        <div class="row mt-4">
+        <div class="mt-4 row">
             <div class="col-lg-6">
                 <h3>Management Configuration:</h3>
                 <hr>
@@ -148,7 +147,7 @@
                 ?>
             </div>
 
-            <div class="col-lg-6 mt-4 mt-lg-0">
+            <div class="mt-4 col-lg-6 mt-lg-0">
                 <h3>Layer 3 Configuration:</h3>
                 <hr>
                 <?= Former::text( 'asn' )
@@ -173,7 +172,7 @@
 
         <div class="form-group">
             <div class="col-lg-offset-2 col-sm-offset-2">
-                <div class="card mt-4">
+                <div class="mt-4 card">
                     <div class="card-header">
                         <ul class="nav nav-tabs card-header-tabs">
                             <li role="presentation" class="nav-item">
@@ -195,7 +194,7 @@
                             ?>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="preview">
-                            <div class="bg-light p-4 well-preview">
+                            <div class="p-4 bg-light well-preview">
                                 Loading...
                             </div>
                         </div>

@@ -111,10 +111,11 @@ Route::group( [ 'prefix' => 'statistics' ], function() {
 ///
 Route::group([ 'namespace' => 'Auth' ], function() {
 
-    Route::controller(\IXP\Http\Controllers\Auth\LoginController::class)->group(function () {
-        Route::get('logout',                 'logout'              )->name("login@logout");
-        Route::get('login',                  'showLoginForm'       )->name("login@showForm");
-        Route::post('login',                 'login'               )->name("login@login");
+    Route::controller(\IXP\Http\Controllers\Auth\LoginController::class)
+        ->group(function () {
+            Route::get('logout',                 'logout'              )->name("login@logout");
+            Route::get('login',                  'showLoginForm'       )->name("login@showForm");
+            Route::post('login',                 'login'               )->name("login@login");
     });
 
     Route::controller(\IXP\Http\Controllers\Auth\ForgotPasswordController::class)->group(function () {

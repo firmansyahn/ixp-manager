@@ -40,8 +40,9 @@ use Illuminate\Support\Facades\Route;
 //     curl -X GET -H "X-IXP-Manager-API-Key: mySuperSecretApiKey" http://ixpv.dev/api/v4/test
 //     wget http://ixpv.dev/api/v4/test?apikey=mySuperSecretApiKey
 
-Route::any( 'ping', 'PublicController@ping' )->name('api-v4:ping' );
-Route::any( 'test', 'PublicController@test' )->name('api-v4:test' );
+Route::get('ping', [IXP\Http\Controllers\Api\V4\PublicController::class], 'ping')->name('api-v4:ping' );
+Route::get('test', [IXP\Http\Controllers\Api\V4\PublicController::class], 'test')->name('api-v4:test' );
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // IX-F Member List Export
@@ -75,4 +76,4 @@ Route::get( 'ixpmanager-users/ixf-ids', function() {
 // Statistics
 //
 // get overall stats by month as a JSON response
-Route::get( 'statistics/overall-by-month', 'StatisticsController@overallByMonth' );
+Route::get('statistics/overall-by-month', [IXP\Http\Controllers\Api\V4\StatisticsController::class], 'overallByMonth');
