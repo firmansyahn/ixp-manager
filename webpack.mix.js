@@ -55,7 +55,10 @@ mix
 //                 require('tailwindcss')('./tailwind.config.js')
 //             ]
 //     });
-
+mix.js('resources/js/main.js', 'public/js')
+    .postCss('resources/css/main.css', 'public/css', [
+        require('tailwindcss')('./tailwind.config.js'),
+    ]).version();
 
 mix.styles(
     [
@@ -68,7 +71,6 @@ mix.styles(
 
         'public/css/ixp-manager.css',
         'public/css/tailwind.css',
-        // 'public/fonts/figtree/latin.css',
         // etc. etc.
     ],
     'public/css/ixp-pack.css',
@@ -76,4 +78,3 @@ mix.styles(
 ).version();
 
 mix.copyDirectory( 'node_modules/font-awesome/fonts', 'public/fonts' );
-// mix.copyDirectory( 'node_modules/@fontsource/figtree', 'public/fonts/figtree' );

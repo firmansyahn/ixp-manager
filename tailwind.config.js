@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
+    './storage/framework/views/*.php',
     "./resources/**/*.blade.php",
     "./resources/**/*.foil.php",
     "./resources/**/*.js",
@@ -11,12 +12,17 @@ module.exports = {
   darkMode: 'class',
 
   plugins: [
+    require('@tailwindcss/forms'),
   ],
 
   theme: {
     extend: {
       fontFamily: {
         inter: ["Inter", "sans-serif"],
+        figtree: ['Figtree', 'sans-serif']
+      },
+      transitionProperty: {
+        'width': 'width'
       },
     },
   },

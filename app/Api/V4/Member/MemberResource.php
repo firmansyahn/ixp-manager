@@ -24,6 +24,18 @@ class MemberResource extends JsonResource
             'slug'                  => $this->shortname,
             'asn'                   => $this->autsys,
             'logo'                  => LogoResource::make($this->whenLoaded('logo')),
+            // 'logo'                  => $this->when(
+            //     $this->relationLoaded('logo'), 
+            //     function () {
+            //         $result = new LogoResource($this->logo);
+
+            //         if (empty($result)) {
+            //             return 'abs';
+            //         }
+
+            //         return $result;
+            //     }
+            // ),
             'peeringpolicy'         => $this->peeringpolicy,
             'status'                => Customer::$CUST_STATUS_TEXT[$this->status],
             'type'                  => Customer::$CUST_TYPES_TEXT[$this->type],

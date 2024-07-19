@@ -1,8 +1,17 @@
-@import "@fontsource/inter/latin.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@import "../../node_modules/@fontsource/inter/latin.css";
+@import "../../node_modules/@fontsource/figtree/latin.css";
+
+
 [x-cloak] { display: none !important; }
 
+
+@layer base {
+    html {
+      font-family: "Inter", system-ui, sans-serif;
+    }
+}

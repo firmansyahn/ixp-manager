@@ -1,10 +1,10 @@
 <?php
 
-namespace IXP\Api\V4\Logo;
+namespace IXP\Api\V4\Vendor;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class LogoResource extends JsonResource
+class VendorResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,8 +15,11 @@ class LogoResource extends JsonResource
     public function toArray($request): array
     {
         return [
-            'customer_id' => $this->customer_id,
-            'stored_name' => $this->stored_name,
+            'id'                => $this->id,
+            'name'              => $this->name,
+            'slug'              => $this->shortname,
+            'nagios_name'       => $this->nagios_name,
+            'bundle_name'       => $this->bundle_name,
         ];
 
     }

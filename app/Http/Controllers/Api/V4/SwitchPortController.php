@@ -132,7 +132,7 @@ class SwitchPortController extends Controller
      */
     public function show(SwitchPort $switchport)
     {
-        $switchport->load(['switcher', 'physicalInterface', 'patchPanelPort']);
+        $switchport->load(['switcher.vendor', 'physicalInterface', 'patchPanelPort']);
 
         return SwitchPortResource::make($switchport);
     }
